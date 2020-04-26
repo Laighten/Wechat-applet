@@ -1,0 +1,65 @@
+<!--按日期删除-->
+<view class='item'>
+  <view class='icon'>
+    <image src='../../images/Admin/detele.png' style="width:22px;height:21px;"></image>
+  </view>
+  <view class='itemName'>
+    <picker  mode = "date" bindchange='batchDelete'>按日期删除</picker>
+  </view>
+    <view class='right'>></view>
+</view>
+<view class='container-line1'></view>
+
+<view class='item' data-index='1' catchtap='panel'>
+  <view class='icon'>
+    <image src='../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
+  </view>
+  <view class='itemName'>
+    <view>待审核信息</view>
+  </view>
+  <view class='right'>></view>
+</view>
+<view class='container-line1'></view>
+
+<block wx:key='index' wx:for='{{waitAdds}}' wx:for-index="idx" wx:if="{{showIndex == 1}}">
+  <view class='container' bindtap=''>
+    <view class='container-content'>
+      <view class='user-info'>
+        <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class='user-name-time'>
+              <view class='user-name'>{{item.user.nickName}}
+                  <button bindtap="access" type='primary' size='mini'>通过</button>
+                  <button bindtap="notAccess" type='warn' size='mini'>不通过</button>
+              </view>
+          <view class='user-publish-time'>{{item.date}}</view>
+        </view>
+      </view>
+      <view class='content'>
+        <!-- 显示文本 -->
+        <block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+          <text class='content-text'>{{item.content}}</text>
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:key='index' wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+        </block>
+        <!-- 显示图片 -->
+        <block wx:elif="{{item.images.length > 0}}">
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+
+        </block>
+        <!-- 显示文本 -->
+        <block wx:else>
+          <text class='content-text'>{{item.content}}</text>
+        </block>
+      </view>
+    </view>
+
+    <view class='container-line2'></view>
+  </view>
+</block>

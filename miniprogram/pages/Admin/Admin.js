@@ -12,6 +12,7 @@ Page({
     pageSize: 5,
     totalCount: 0,
     waitAdds: {},
+    
   },
   /**
   * 生命周期函数--监听页面加载
@@ -20,6 +21,8 @@ Page({
     that = this
     that.getData(that.data.page);
   },
+  
+  //删除
   // 管理员批量删除
   batchDelete: function (e) {
     var date = String(e.detail.value);
@@ -46,7 +49,7 @@ Page({
       })
     }
   },
- 
+  
   getData: function (page) {
     // 获取总数
     db.collection('waitAdd').count({
@@ -137,20 +140,53 @@ Page({
       })
     }
   },
-  access:function(){
-    // db.collection('topic').add({
-    //   // data 字段表示需新增的 JSON 数据
-    //   data: {
-    //     content: that.data.content,
-    //     //date: new Date(),
-    //     date: that.data.date,
-    //     images: that.data.images,
-    //     user: that.data.user,
-    //     isLike: that.data.isLike,
-    //   },
-    //   success: function (res) { },
-    // })
-    console.log(this.data.waitAdds._id)
+
+  access:function(event){
+    var id = event.currentTarget.dataset.topicid;
+   
+    for (var i = 0; i <that.data.waitAdds.length; i++){
+      if (that.data.waitAdds[i]._id==id){
+        
+        db.collection('topic').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            _id: that.data.waitAdds[i]._id,
+            content: that.data.waitAdds[i].content,
+            date: that.data.waitAdds[i].date,
+            images: that.data.waitAdds[i].images,
+            isLike: false,
+            user: that.data.waitAdds[i].user,
+          },
+          // success: function (res) {
+          //     that.accessWell()
+          // },
+        }).then(res=>{
+          console.log(res)
+          that.accessWell()
+        })
+        
+      }
+    };
+    
+    wx.cloud.callFunction({
+   
+      name: 'deleteOne',
+      data: {
+        _id:id
+      }
+    }).then(console.log);
+    //that.caxundata(id);
+    wx.navigateTo({
+      url: "Admin"
+    });
+  },
+ 
+  accessWell:function(){
+    wx.showToast({
+      title: '审核成功，已发布到讯息界面',
+      icon: 'none',
+      duration: 1500
+    })
   },
   notAccess:function(e){
 

@@ -28,8 +28,8 @@
         <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
         <view class='user-name-time'>
               <view class='user-name'>{{item.user.nickName}}
-                  <button bindtap="access" type='primary' size='mini'>通过</button>
-                  <button bindtap="notAccess" type='warn' size='mini'>不通过</button>
+                  <button bindtap="access" type='primary' data-topicId='{{item._id}}' size='mini'>通过</button>
+                  <button bindtap="notAccess" type='warn' data-topicId='{{item._id}}' size='mini'>不通过</button>
               </view>
           <view class='user-publish-time'>{{item.date}}</view>
         </view>

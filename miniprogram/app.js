@@ -1,6 +1,8 @@
 //app.js
+
 App({
-  onLaunch: function() {
+
+  onLaunch: function () {
 
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -11,8 +13,10 @@ App({
     }
 
     this.globalData = {
-      //openid: 'oa9k44zSTR6vinVisvj_JeX_iT24',
       evn: 'laighten-8h7l4'
     }
-  }
+
+    
+   },
+
 })

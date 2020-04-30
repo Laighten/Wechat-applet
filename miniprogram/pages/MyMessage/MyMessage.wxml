@@ -1,104 +1,148 @@
 <!--miniprogram/pages/home/home.wxml-->
 <view class='line'></view>
-<view class='item' data-index='1' catchtap='panel1'>
-  <view class='icon'>
-        <image src='../../images/Message/view.png' style="width:27px;height:25px;"></image>
-  </view>
-  <view class='word'>
-    待审核发布......
-  </view>
-  <view class='right'>></view>
+
+<!-- 待发布讯息模块 -->
+<view class="cu-bar bg-white solid-bottom margin-top" data-index='1' catchtap='panel1'>
+	<view class="action">
+		<text class="cuIcon-title text-orange "></text>
+		<text class="word">待发布讯息</text>
+	</view>
 </view>
 
 <block wx:key='index' wx:for='{{waitAdds}}' wx:for-index="idx" wx:if="{{showIndex1 == 1}}">
-  <view class='container' data-topicId='{{item._id}}'>
-    <view class='container-content'>
-      <view class='user-info'>
-        <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
-        <view class='user-name-time'>
-          <view class='user-name'>{{item.user.nickName}}<text class='wait'>待审核中......</text></view>
-          <view class='user-publish-time'>{{item.date}}</view>
-          
-        </view>
-      </view>
-      <view class='content'>
-        <!-- 显示文本 -->
-        <block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
-          <text class='content-text'>{{item.content}}</text>
-          <scroll-view class='content-scroll' scroll-x='true'>
-            <block wx:key='index' wx:for="{{item.images}}">
-              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
-            </block>
-          </scroll-view>
-        </block>
-        <!-- 显示图片 -->
-        <block wx:elif="{{item.images.length > 0}}">
-          <scroll-view class='content-scroll' scroll-x='true'>
-            <block wx:for="{{item.images}}">
-              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
-            </block>
-          </scroll-view>
+	<view class='container' data-topicId='{{item._id}}'>
+		<view class='container-content'>
+			<view class='user-info'>
+				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
+				<view class='user-name-time'>
+					<view class='user-name'>{{item.user.nickName}}<view class="cu-tag round bg-orange light wait">审核中</view></view>
+					<view class='user-publish-time'>{{item.date}}</view>
 
-        </block>
-        <!-- 显示文本 -->
-        <block wx:else>
-          <text class='content-text'>{{item.content}}</text>
-        </block>
-      </view>
-    </view>
+				</view>
+			</view>
+			<view class='content'>
+				<!-- 显示文本 -->
+				<block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+					<text class='content-text'>{{item.content}}</text>
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:key='index' wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
+				</block>
+				<!-- 显示图片 -->
+				<block wx:elif="{{item.images.length > 0}}">
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
 
-    <view class='container-line'></view>
-  </view>
+				</block>
+				<!-- 显示文本 -->
+				<block wx:else>
+					<text class='content-text'>{{item.content}}</text>
+				</block>
+			</view>
+		</view>
+		<view class='container-line'></view>
+	</view>
 </block>
 
-<view class='line'></view>
+<!-- 已发布讯息模块 -->
+<view class='cu-bar bg-white solid-bottom margin-top' data-index='1' catchtap='panel2'>
+	<view class="action">
+		<text class="cuIcon-title text-orange "></text>
+		<text class="word">已发布讯息</text>
+	</view>
 
-<view class='item' data-index='1' catchtap='panel2'>
-  <view class='icon'>
-        <image src='../../images/Message/save.png' style="width:27px;height:25px;"></image>
-  </view>
-  <view class='word'>
-    已发布讯息......
-  </view>
-  <view class='right'>></view>
 </view>
 
 <block wx:key='index' wx:for='{{topics}}' wx:for-index="idx" wx:if="{{showIndex2 == 1}}">
-  <view class='container' bindtap='onItemClick' data-topicId='{{item._id}}'>
-    <view class='container-content'>
-      <view class='user-info'>
-        <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
-        <view class='user-name-time'>
-          <view class='user-name'>{{item.user.nickName}}</view>
-          <view class='user-publish-time'>{{item.date}}</view>
-        </view>
-      </view>
-      <view class='content'>
-        <!-- 显示文本 -->
-        <block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
-          <text class='content-text'>{{item.content}}</text>
-          <scroll-view class='content-scroll' scroll-x='true'>
-            <block wx:key='index' wx:for="{{item.images}}">
-              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
-            </block>
-          </scroll-view>
-        </block>
-        <!-- 显示图片 -->
-        <block wx:elif="{{item.images.length > 0}}">
-          <scroll-view class='content-scroll' scroll-x='true'>
-            <block wx:for="{{item.images}}">
-              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
-            </block>
-          </scroll-view>
+	<view class='container' data-topicId='{{item._id}}'>
+		<view class='container-content'>
+			<view class='user-info'>
+				<image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+				<view class='user-name-time'>
+					<view class='user-name'>{{item.user.nickName}}</view>
+					<view class='user-publish-time'>{{item.date}}</view>
+				</view>
+			</view>
+			<view class='content'>
+				<!-- 显示文本 -->
+				<block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+					<text class='content-text'>{{item.content}}</text>
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:key='index' wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
+				</block>
+				<!-- 显示图片 -->
+				<block wx:elif="{{item.images.length > 0}}">
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
 
-        </block>
-        <!-- 显示文本 -->
-        <block wx:else>
-          <text class='content-text'>{{item.content}}</text>
-        </block>
-      </view>
-    </view>
+				</block>
+				<!-- 显示文本 -->
+				<block wx:else>
+					<text class='content-text'>{{item.content}}</text>
+				</block>
+			</view>
+		</view>
 
-    <view class='container-line'></view>
-  </view>
+		<view class='container-line'></view>
+	</view>
+</block>
+
+<!-- 未通过信息模块 -->
+<view class='cu-bar bg-white solid-bottom margin-top' data-index='1' catchtap='panel3'>
+	<view class="action">
+		<text class="cuIcon-title text-orange "></text>
+		<text class="word">未通过讯息</text>
+	</view>
+
+</view>
+
+<block wx:key='index' wx:for='{{topics}}' wx:for-index="idx" wx:if="{{showIndex3 == 1}}">
+	<view class='container' bindtap='onItemClick' data-topicId='{{item._id}}'>
+		<view class='container-content'>
+			<view class='user-info'>
+				<image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+				<view class='user-name-time'>
+					<view class='user-name'>{{item.user.nickName}}</view>
+					<view class='user-publish-time'>{{item.date}}</view>
+				</view>
+			</view>
+			<view class='content'>
+				<!-- 显示文本 -->
+				<block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+					<text class='content-text'>{{item.content}}</text>
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:key='index' wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
+				</block>
+				<!-- 显示图片 -->
+				<block wx:elif="{{item.images.length > 0}}">
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
+
+				</block>
+				<!-- 显示文本 -->
+				<block wx:else>
+					<text class='content-text'>{{item.content}}</text>
+				</block>
+			</view>
+		</view>
+
+		<view class='container-line'></view>
+	</view>
 </block>

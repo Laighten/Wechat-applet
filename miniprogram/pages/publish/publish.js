@@ -116,7 +116,7 @@ Page({
       },
       success: function(res) {
         // 保存到发布历史
-        //that.saveToHistoryServer();
+        // that.saveToHistoryServer();
         // 清空数据
         that.data.content = "";
         that.data.images = [];

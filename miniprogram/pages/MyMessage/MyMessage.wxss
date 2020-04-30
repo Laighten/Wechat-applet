@@ -97,17 +97,17 @@
   align-items: center;
 }
 .word{
-  margin-left: 25px;
+  font-size: 15px;
 }
 .line {
-  height: 10px;
+  height: 5px;
 }
 .right {
   width: 40%;
   text-align: right;
 }
 .wait{
-  margin-left: 60%;
+  margin-left: 80%;
   color:#999;
-  font-size:25rpx;
+  font-size:13px;
 }

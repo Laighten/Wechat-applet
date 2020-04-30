@@ -1,6 +1,7 @@
 const app = getApp()
 var that
 const db = wx.cloud.database();
+var userOpenId = ''
 
 Page({
 
@@ -10,11 +11,14 @@ Page({
   data: {
     page: 0,
     pageSize: 5,
-    totalCount: 0,
+    totalCount1: 0,
+    totalCount2: 0,
     topics: {},
     waitAdds:{},
+    historyMsg:{},
     showIndex1: 0,
-    showIndex2: 0
+    showIndex2: 0,
+    showIndex3: 0
   },
 
   /**
@@ -24,7 +28,9 @@ Page({
     that = this
     that.getData(that.data.page);
   },
+
   panel1: function (e) {
+    
     if (e.currentTarget.dataset.index != this.data.showIndex1) {
       this.setData({
         showIndex1: e.currentTarget.dataset.index
@@ -44,39 +50,55 @@ Page({
     } else {
       this.setData({
         showIndex2: 0,
-
+      })
+    }
+  },
+  panel3: function (e) {
+    if (e.currentTarget.dataset.index != this.data.showIndex3) {
+      this.setData({
+        showIndex3: e.currentTarget.dataset.index
+      })
+    } else {
+      this.setData({
+        showIndex3: 0,
       })
     }
   },
 
+
   /**
-   * 获取列表数据
+   * 获取待发布列表数据
    * 
    */
-  getData: function (page) {
+  getData:async function (page) {
+    await wx.cloud.callFunction({
+      name:'login',
+    }).then(res => {
+      userOpenId = res.result.openid
+    })
+
     // 获取待发布总数
     db.collection('waitAdd').count({
       success: function (res) {
-        that.data.totalCount = res.total;
+        that.data.totalCount1 = res.total;
       }
     })
+    
     // 获取前十条
     try {
       db.collection('waitAdd')
         .where({
-          _openid: app.globalData.openid, // 填入当前用户 openid
+          _openid: userOpenId, // 填入当前用户 openid
         })
         .orderBy('date', 'desc')
         .get({
-          success: function (res) {
-
+          success: function (res) {    
             that.data.waitAdds = res.data;
             that.setData({
               waitAdds: that.data.waitAdds,
-            })
+            });
             wx.hideNavigationBarLoading();//隐藏加载
             wx.stopPullDownRefresh();
-
           },
           fail: function (event) {
             wx.hideNavigationBarLoading();//隐藏加载
@@ -88,28 +110,29 @@ Page({
       wx.stopPullDownRefresh();
       console.error(e);
     }
+
     // 获取已发布总数
-    db.collection('history').count({
+    db.collection('topic').count({
       success: function (res) {
-        that.data.totalCount = res.total;
+        that.data.totalCount2 = res.total;
       }
     })
     // 获取前十条
     try {
-      db.collection('history')
+      db.collection('topic')
         .where({
-          _openid: app.globalData.openid, // 填入当前用户 openid
+          _openid: userOpenId, // 填入当前用户 openid
         })
-        .limit(that.data.pageSize) // 限制返回数量为 10 条
+        // .limit(that.data.pageSize) // 限制返回数量为 10 条
         .orderBy('date', 'desc')
         .get({
           success: function (res) {
-
             that.data.topics = res.data;
             that.setData({
               topics: that.data.topics,
             })
-            wx.hideNavigationBarLoading();//隐藏加载
+
+             wx.hideNavigationBarLoading();//隐藏加载
             wx.stopPullDownRefresh();
 
           },
@@ -124,6 +147,8 @@ Page({
       console.error(e);
     }
   },
+
+
   /**
    * item 点击
    */
@@ -202,5 +227,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
 })

@@ -76,7 +76,7 @@
 }
 
 .itemName {
-  width: 40%;
+  width: 90%;
   font-size: 14px;
   font-weight: bold;
 }

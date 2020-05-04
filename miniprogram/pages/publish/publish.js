@@ -108,6 +108,7 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         content: that.data.content,
+        publisherID: null,
         //date: new Date(),
         date: that.data.date,
         images: that.data.images,

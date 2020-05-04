@@ -1,23 +1,23 @@
+<view class='line'></view>
+
 <!--按日期删除-->
-<view class='item'>
+<view class='cu-bar bg-white solid-bottom margin-top'>
   <view class='icon'>
     <image src='../../images/Admin/detele.png' style="width:22px;height:21px;"></image>
   </view>
   <view class='itemName'>
-    <picker  mode = "date" bindchange='batchDelete'>按日期删除</picker>
+    <picker  mode= "date" bindchange='batchDelete'>按日期删除</picker>
   </view>
-    <view class='right'>></view>
 </view>
-<view class='container-line1'></view>
+<view class='line'></view>
 
-<view class='item' data-index='1' catchtap='panel'>
+<view class='cu-bar bg-white solid-bottom margin-top' data-index='1' catchtap='panel'>
   <view class='icon'>
     <image src='../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
   </view>
   <view class='itemName'>
     <view>待审核信息</view>
   </view>
-  <view class='right'>></view>
 </view>
 <view class='container-line1'></view>
 

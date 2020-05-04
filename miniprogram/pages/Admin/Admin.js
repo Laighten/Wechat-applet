@@ -50,7 +50,8 @@ Page({
     }
   },
   
-  getData: function (page) {
+  getData: async function (page) {
+    
     // 获取总数
     db.collection('waitAdd').count({
       success: function (res) {
@@ -151,6 +152,7 @@ Page({
           // data 字段表示需新增的 JSON 数据
           data: {
             _id: that.data.waitAdds[i]._id,
+            publisherID: that.data.waitAdds[i]._openid,
             content: that.data.waitAdds[i].content,
             date: that.data.waitAdds[i].date,
             images: that.data.waitAdds[i].images,
@@ -176,11 +178,47 @@ Page({
       }
     }).then(console.log);
     //that.caxundata(id);
-    wx.navigateTo({
-      url: "Admin"
-    });
+    // wx.navigateTo({
+    //   url: "Admin"
+    // });
   },
- 
+  notAccess: function(event) {
+    var id = event.currentTarget.dataset.topicid;
+
+    for (var i = 0; i < that.data.waitAdds.length; i++) {
+      if (that.data.waitAdds[i]._id == id) {
+
+        db.collection('deny').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            _id: that.data.waitAdds[i]._id,
+            publisherID: that.data.waitAdds[i]._openid,
+            content: that.data.waitAdds[i].content,
+            date: that.data.waitAdds[i].date,
+            images: that.data.waitAdds[i].images,
+            isLike: false,
+            user: that.data.waitAdds[i].user,
+          },
+          // success: function (res) {
+          //     that.accessWell()
+          // },
+        }).then(res => {
+          console.log(res)
+          that.accessNot()
+        })
+
+      }
+    };
+    wx.cloud.callFunction({
+
+      name: 'deleteOne',
+      data: {
+        _id: id
+      }
+    }).then(console.log);
+    //that.caxundata(id);
+    
+  },
   accessWell:function(){
     wx.showToast({
       title: '审核成功，已发布到讯息界面',
@@ -188,8 +226,18 @@ Page({
       duration: 1500
     })
   },
-  notAccess:function(e){
+  accessNot: function () {
+    wx.showToast({
+      title: '不通过审核，讯息已保存至未通过界面',
+      icon: 'none',
+      duration: 1500
+    })
+  },
 
-  }
+  // onPullDownRefresh: function () {
+  //   wx.showNavigationBarLoading() //在标题栏中显示加载
+  //   //console.log('pulldown');
+  //   that.getData(that.data.page);
+  // }
 
 })

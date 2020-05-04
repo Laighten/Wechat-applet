@@ -13,9 +13,11 @@ Page({
     pageSize: 5,
     totalCount1: 0,
     totalCount2: 0,
+    totalCount3: 0,
     topics: {},
     waitAdds:{},
     historyMsg:{},
+    denys:{},
     showIndex1: 0,
     showIndex2: 0,
     showIndex3: 0
@@ -30,7 +32,7 @@ Page({
   },
 
   panel1: function (e) {
-    
+
     if (e.currentTarget.dataset.index != this.data.showIndex1) {
       this.setData({
         showIndex1: e.currentTarget.dataset.index
@@ -121,7 +123,7 @@ Page({
     try {
       db.collection('topic')
         .where({
-          _openid: userOpenId, // 填入当前用户 openid
+         publisherID: userOpenId, // 填入当前用户 openid
         })
         // .limit(that.data.pageSize) // 限制返回数量为 10 条
         .orderBy('date', 'desc')
@@ -133,6 +135,42 @@ Page({
             })
 
              wx.hideNavigationBarLoading();//隐藏加载
+            wx.stopPullDownRefresh();
+
+          },
+          fail: function (event) {
+            wx.hideNavigationBarLoading();//隐藏加载
+            wx.stopPullDownRefresh();
+          }
+        })
+    } catch (e) {
+      wx.hideNavigationBarLoading();//隐藏加载
+      wx.stopPullDownRefresh();
+      console.error(e);
+    }
+
+    // 获取未发布总数
+    db.collection('deny').count({
+      success: function (res) {
+        that.data.totalCount3 = res.total;
+      }
+    })
+    // 获取前十条
+    try {
+      db.collection('deny')
+        .where({
+          publisherID: userOpenId, // 填入当前用户 openid
+        })
+        // .limit(that.data.pageSize) // 限制返回数量为 10 条
+        .orderBy('date', 'desc')
+        .get({
+          success: function (res) {
+            that.data.denys = res.data;
+            that.setData({
+              denys: that.data.denys,
+            })
+
+            wx.hideNavigationBarLoading();//隐藏加载
             wx.stopPullDownRefresh();
 
           },

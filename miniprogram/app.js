@@ -1,7 +1,5 @@
 //app.js
-
 App({
-
   onLaunch: function () {
 
     if (!wx.cloud) {
@@ -11,12 +9,23 @@ App({
         traceUser: true,
       })
     }
+    wx.cloud.callFunction({
+      name: 'login',
+      complete: (res) => {
+        this.globalData.openid = res.result.openid
+        //console.log(res.result.openid)
+        if (res.result.openid == 'oa9k446TlT3mS-JwdQVx6Shf0jPU') {
+          this.globalData.superAdmin = true
+        }
+      }
+    })
 
     this.globalData = {
-      evn: 'laighten-8h7l4'
+      openid: '',
+      superAdmin: false,
+      evn: 'laighten-8h7l4',
     }
 
-    
-   },
+  }
 
 })

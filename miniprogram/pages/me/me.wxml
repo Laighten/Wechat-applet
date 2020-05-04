@@ -66,7 +66,8 @@
   <view class='hr'></view>
   <view class='line'></view>
   
-  <view class='item' bindtap='onAdminClick'>
+  <view wx:if='{{isAdmin==1}}'>
+    <view class='item' bindtap='onAdminClick'>
     <view class='icon'>
       <image src='../../images/Admin/Admin.png' style="width:22px;height:21px;"></image>
     </view>
@@ -74,6 +75,30 @@
       <view>管理员界面</view>
     </view>
     <view class='right'>></view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class='item' bindtap='applyAdminClick'>
+    <view class='icon'>
+      <image src='../../images/Admin/Admin.png' style="width:22px;height:21px;"></image>
+    </view>
+    <view class='itemName'>
+      <view>申请管理权限</view>
+    </view>
+    <view class='right'>></view>
+    </view>
+  </view>
+  <view wx:if='{{isSuperAdmin}}'>
+  <view class='hr'></view>
+  <view class='item' bindtap='checkAdminClick'>
+    <view class='icon'>
+      <image src='../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
+    </view>
+    <view class='itemName'>
+      <view>管理员审核</view>
+    </view>
+    <view class='right'>></view>
+    </view>
   </view>
   
 </view>

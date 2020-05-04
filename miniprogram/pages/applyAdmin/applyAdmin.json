@@ -1,6 +1,7 @@
 {
-  "enablePullDownRefresh": true,
+  "usingComponents": {},
   "backgroundColor": "#5495e6",
+  "navigationBarTitleText": "申请管理员",
   "navigationBarBackgroundColor": "#5495e6",
   "navigationBarTextStyle": "white"
 }

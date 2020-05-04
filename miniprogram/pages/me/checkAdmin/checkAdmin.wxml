@@ -1,0 +1,192 @@
+<!--miniprogram/pages/me/checkAdmin/checkAdmin.wxml-->
+
+<view class='container-line1'></view>
+<view class="cu-bar bg-white solid-bottom margin-top" data-index='1' catchtap='panel0'>
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text>
+    <text class="word">待审核人员</text>
+  </view>
+</view>
+
+<block wx:key='index' wx:for='{{adminWait}}' wx:for-index="idx" wx:if="{{showIndex0 == 1}}">
+  <view class='container' bindtap=''>
+    <view class='container-content'>
+      <view class='user-info'>
+        <image wx:if='{{item.user.avatarUrl}}' class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class='user-name-time'>
+          <view class='user-name'>姓名：{{item.name}}
+
+            <button data-adminid="{{item._id}}" bindtap="access" class="cu-btn bg-green round shadow item-right"> 
+              通<text decode="{{true}}">&ensp;&ensp;</text>过
+            </button>
+          </view>
+          <view class='user-publish-time'>性别：{{item.gender}}
+            <button data-adminid="{{item._id}}" bindtap="notAccess" class="cu-btn bg-red round  shadow item-right">不通过</button>
+          </view>
+          <view class='user-publish-time'>地址：{{item.region + ','+item.community}}</view>
+          <view class='user-publish-time'>手机号码：{{item.phoneNum}}</view>
+          <view class='user-publish-time'>申请时间：{{item.date}}</view>
+          
+          
+        </view>
+      </view>
+      <view class='content'>
+        <!-- 显示文本 -->
+        <block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+          <text class='content-text'>申请理由：{{item.reason}}</text>
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:key='index' wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+        </block>
+        <!-- 显示图片 -->
+        <block wx:elif="{{item.images.length > 0}}">
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+
+        </block>
+        <!-- 显示文本 -->
+        <block wx:else>
+          <text class='content-text'>{{item.content}}</text>
+        </block>
+      </view>
+    </view>
+
+    <view class='container-line2'></view>
+  </view>
+</block>
+
+
+<!--审核未通过-->
+<!-- <view class='item' data-index='1' catchtap='panel1'>
+  <view class='icon'>
+    <image src='../../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
+  </view>
+  <view class='itemName'>
+    <view>未通过审核人员</view>
+  </view>
+  <view class='right'>></view>
+</view>
+
+<view class='container-line1'></view> -->
+<view class="cu-bar bg-white solid-bottom margin-top" data-index='1' catchtap='panel1'>
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text>
+    <text class="word">未通过审核人员</text>
+  </view>
+</view>
+
+<block wx:key='index' wx:for='{{adminNoAccess}}' wx:for-index="idx" wx:if="{{showIndex1 == 1}}">
+  <view class='container' bindtap=''>
+    <view class='container-content'>
+      <view class='user-info'>
+        <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class='user-name-time'>
+          <view class='user-name'>姓名：{{item.name}}
+            <view class="cu-tag round bg-orange light wait">未通过</view>
+            <button data-adminid="{{item._id}}" bindtap="access" class="cu-btn bg-green round shadow item-right">通过</button>
+
+          </view>
+          <view class='user-publish-time'>性别：{{item.gender}}</view>
+          <view class='user-publish-time'>地址：{{item.region + ','+item.community}}</view>
+          <view class='user-publish-time'>手机号码：{{item.phoneNum}}</view>
+          <view class='user-publish-time'>申请时间：{{item.date}}</view>
+        </view>
+      </view>
+      <view class='content'>
+        <!-- 显示文本 -->
+        <block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+          <text class='content-text'>申请理由：{{item.reason}}</text>
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:key='index' wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+        </block>
+        <!-- 显示图片 -->
+        <block wx:elif="{{item.images.length > 0}}">
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+
+        </block>
+        <!-- 显示文本 -->
+        <block wx:else>
+          <text class='content-text'>{{item.content}}</text>
+        </block>
+      </view>
+    </view>
+
+    <view class='container-line2'></view>
+  </view>
+</block>
+
+<!--审核通过-->
+<!-- <view class='item' data-index='1' catchtap='panel2'>
+  <view class='icon'>
+    <image src='../../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
+  </view>
+  <view class='itemName'>
+    <view>通过审核人员</view>
+  </view>
+  <view class='right'>></view>
+</view>
+<view class='container-line1'></view> -->
+<view class="cu-bar bg-white solid-bottom margin-top" data-index='1' catchtap='panel2'>
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text>
+    <text class="word">通过审核人员</text>
+  </view>
+</view>
+<block wx:key='index' wx:for='{{adminAccess}}' wx:for-index="idx" wx:if="{{showIndex2 == 1}}">
+  <view class='container' bindtap=''>
+    <view class='container-content'>
+      <view class='user-info'>
+        <image wx:if='{{item.user.avatarUrl}}' class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class='user-name-time'>
+          <view class='user-name'>姓名：{{item.name}}
+            <view class="cu-tag round bg-orange light wait">通过</view>
+            <button data-adminid="{{item._id}}" bindtap="notAccess" class="cu-btn bg-red round  shadow item-right">不通过</button>
+
+          </view>
+          <view class='user-publish-time'>性别：{{item.gender}}</view>
+          <view class='user-publish-time'>地址：{{item.region + ','+item.community}}</view>
+          <view class='user-publish-time'>手机号码：{{item.phoneNum}}</view>
+          <view class='user-publish-time'>申请时间：{{item.date}}</view>
+        </view>
+      </view>
+      <view class='content'>
+        <!-- 显示文本 -->
+        <block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+          <text class='content-text'>申请理由：{{item.reason}}</text>
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:key='index' wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+        </block>
+        <!-- 显示图片 -->
+        <block wx:elif="{{item.images.length > 0}}">
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:for="{{item.images}}">
+              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
+            </block>
+          </scroll-view>
+
+        </block>
+        <!-- 显示文本 -->
+        <block wx:else>
+          <text class='content-text'>{{item.content}}</text>
+        </block>
+      </view>
+    </view>
+
+    <view class='container-line2'></view>
+  </view>
+</block>

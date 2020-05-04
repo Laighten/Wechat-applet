@@ -1,0 +1,68 @@
+<!--miniprogram/pages/applyAdmin/applyAdmin.wxml-->
+<view wx:if="{{applyed}}" class="i-class i-noticebar">
+  <text class="cuIcon-notification text-orange"></text> 您的申请未通过，请修改后再次提交哦~
+</view>
+<view class="content">
+  <form bindsubmit="formSubmit">
+    <view class="text-content">
+      <view class='cu-form-group '>
+        <label class='title'>姓名</label>
+        <input name="name" placeholder="请填写真实姓名" bind:change="onNameChange" value='{{applyInfo.name}}' />
+      </view>
+      <view class="cu-form-group">
+        <view class='title'>性别</view>
+        <!-- <radio-group name="gender" bind:change="onGenderChange">
+          <label>
+            <radio class="blue radio" value="男" checked/>男</label>
+          <label>
+            <radio class="blue radio" value="女" />女</label>
+        </radio-group> -->
+        <radio-group  name="gender" bind:change="onGenderChange">
+          <label class="radio" wx:for="{{genders}}" wx:key="index">
+            <radio class="blue radio" value="{{item.name}}" checked="{{item.selected}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">手机号码</view>
+        <input name="phoneNum" placeholder="手机号码" bind:change="onPhoneChange" value='{{applyInfo.phoneNum}}' />
+        <view class="cu-capsule radius">
+          <view class="cu-tag bg-blue">
+            +86
+          </view>
+          <view class="cu-tag line-blue">
+            中国大陆
+          </view>
+        </view>
+      </view>
+      <!-- <view class="cu-form-group">
+        <view class="title">验证码</view>
+        <input placeholder="请输入验证码"></input>
+        <button class="cu-btn bg-blue shadow">验证码</button>
+      </view> -->
+      <view class="cu-form-group">
+        <view class="title">地址选择</view>
+        <picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            {{region[0]}}，{{region[1]}}，{{region[2]}}
+          </view>
+        </picker>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">详细地址</view>
+        <input placeholder="精确到社区或乡镇" name="community" bind:change="onCommunityChange" value='{{applyInfo.community}}'></input>
+        <text class="cuIcon-locationfill text-orange"></text>
+      </view>
+      <view class="cu-form-group margin-top">
+        <textarea name="reason" type="text" placeholder="申请理由" value="{{applyInfo.reason}}" bindblur='getTextAreaReason'></textarea>
+      </view>
+
+    </view>
+    <view class="padding flex flex-direction">
+
+      <button class="cu-btn bg-grey lg" formType='submit' open-type="getUserInfo">提交申请</button>
+    </view>
+
+  </form>
+
+</view>

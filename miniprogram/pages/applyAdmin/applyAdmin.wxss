@@ -1,0 +1,19 @@
+/* miniprogram/pages/applyAdmin/applyAdmin.wxss */
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+.i-noticebar{
+  display:flex;
+  height:72rpx;
+  -height:72rpx;
+  font-size:14px;
+  color:#f76a24;
+  background-color:#fefcec;
+  overflow:hidden;
+  align-items:center;
+  }
+.i-noticebar-icon{
+  display:flex;
+  margin-left:30rpx;
+  align-items:center
+  }

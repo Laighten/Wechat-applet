@@ -3,7 +3,7 @@
   <form bindsubmit="formSubmit">
     <view class="text-content">
       <view class='text-area'>
-        <textarea name="input-content" type="text" placeholder="说点什么吧~" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent' maxlength='300'></textarea>
+        <textarea name="input-content" type="text" placeholder="说点什么吧~(图片最多可上传六张哦)" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent' maxlength='300'></textarea>
       </view>
 
     </view>

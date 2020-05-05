@@ -1,6 +1,6 @@
 {
-  "enablePullDownRefresh": true,
-  "backgroundColor": "#da564c",
+  "backgroundColor": "#5495e6",
+  "navigationBarTitleText": "回复",
   "navigationBarBackgroundColor": "#da564c",
   "navigationBarTextStyle": "white"
 }

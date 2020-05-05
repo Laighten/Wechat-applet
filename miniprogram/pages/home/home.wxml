@@ -1,8 +1,8 @@
 <!--miniprogram/pages/home/home.wxml-->
 <block wx:key='index' wx:for='{{topics}}' wx:for-index="idx">
-  <view class='container' bindtap='onItemClick' data-topicId='{{item._id}}' data-openid='{{item._openid}}'>
-    <view class='container-content'>
-      <view class='user-info'>
+  <view class='container  cu-card ' bindtap='onItemClick' data-topicId='{{item._id}}' data-openid='{{item._openid}}'>
+    <view class='container-content cu-item grid grid-square shadow-blur'>
+      <view class='user-info' >
         <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
         <view class='user-name-time'>
           <view class='user-name'>{{item.user.nickName}}</view>
@@ -13,7 +13,7 @@
         <!-- 显示文本 -->
         <block wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
           <text class='content-text'>{{item.content}}</text>
-          <scroll-view class='content-scroll' scroll-x='true'>
+          <scroll-view class='content-scroll image' scroll-x='true'>
             <block wx:key='index' wx:for="{{item.images}}">
               <image class='content-img' src='{{item}}' mode='aspectFill'></image>
             </block>
@@ -21,7 +21,7 @@
         </block>
         <!-- 显示图片 -->
         <block wx:elif="{{item.images.length > 0}}">
-          <scroll-view class='content-scroll' scroll-x='true'>
+          <scroll-view class='content-scroll ' scroll-x='true'>
             <block wx:key='index' wx:for="{{item.images}}">
               <image class='content-img' src='{{item}}' mode='aspectFill'></image>
             </block>
@@ -35,6 +35,6 @@
       </view>
     </view>
 
-    <view class='container-line'></view>
+   
   </view>
 </block>

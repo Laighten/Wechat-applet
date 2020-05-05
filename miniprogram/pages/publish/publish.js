@@ -27,16 +27,21 @@ Page({
     that.data.content = event.detail.value;
   },
   //获取当前时间并转换
+  
+  formatNumber:function(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+},
+
   toDate: function () {
     var myDate = new Date();
     //var dateD = myDate.toLocaleDateString();
-    var dateY = myDate.getFullYear();;
-    var dateM = myDate.getMonth();
-    dateM =dateM+1;
-    var dateD = myDate.getDate();
-    var dateH = myDate.getHours();
-    var datem = myDate.getMinutes();
-    var dateS = myDate.getSeconds();
+    var dateY = this.formatNumber(myDate.getFullYear());
+    var dateM = this.formatNumber(myDate.getMonth() + 1);
+    var dateD = this.formatNumber(myDate.getDate()) ;
+    var dateH = this.formatNumber(myDate.getHours()) ;
+    var datem = this.formatNumber(myDate.getMinutes()) ;
+    var dateS = this.formatNumber( myDate.getSeconds());
     that.data.date = dateY + '-' + dateM+'-'+dateD + ' ' + dateH + ':' + datem + ':' + dateS
     //console.log(that.data.date);
   },
@@ -108,7 +113,6 @@ Page({
       // data 字段表示需新增的 JSON 数据
       data: {
         content: that.data.content,
-        publisherID: null,
         //date: new Date(),
         date: that.data.date,
         images: that.data.images,
@@ -117,7 +121,7 @@ Page({
       },
       success: function(res) {
         // 保存到发布历史
-        // that.saveToHistoryServer();
+        //that.saveToHistoryServer();
         // 清空数据
         that.data.content = "";
         that.data.images = [];

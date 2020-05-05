@@ -14,13 +14,7 @@ Page({
     waitAdds: {},
     
   },
-  /**
-  * 生命周期函数--监听页面加载
-  */
-  onLoad: function (options) {
-    that = this
-    that.getData(that.data.page);
-  },
+  
   
   //删除
   // 管理员批量删除
@@ -219,6 +213,7 @@ Page({
     //that.caxundata(id);
     
   },
+  
   accessWell:function(){
     wx.showToast({
       title: '审核成功，已发布到讯息界面',
@@ -233,7 +228,13 @@ Page({
       duration: 1500
     })
   },
-
+  /**
+    * 生命周期函数--监听页面加载
+    */
+  onLoad: function (options) {
+    that = this
+    that.getData(that.data.page);
+  }
   // onPullDownRefresh: function () {
   //   wx.showNavigationBarLoading() //在标题栏中显示加载
   //   //console.log('pulldown');

@@ -7,9 +7,18 @@ Page({
    */
   data: {
     topic: {},
+    comments:{},
     id: '',
+    firstId:'',
     openid: '',
     isLike: false,
+    indicatorDots: true,
+    vertical: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500,
+    replaysSecond:[],
+    
   },
 
   /**
@@ -53,25 +62,54 @@ Page({
   onShow: function() {
     // 获取回复列表
     that.getReplay()
+    //that.getReplaySecond()
+    //console.log(replays)
   },
 
-  getReplay: function() {
+  getReplay:async function() {
     // 获取回复列表
-    db.collection('replay')
+    var {data:res} = await db.collection('comment')
       .where({
         t_id: that.data.id
-      })
-      .get({
-        success: function(res) {
-          // res.data 包含该记录的数据
-          console.log(res)
-          that.setData({
-            replays: res.data
-          })
-        },
-        fail: console.error
+      }).get()
+      console.log(res)
+      var len = 0
+      var relength = 0
+      for(var i = 0;i < res.length;i++){
+        var {data:res1} =  await db.collection('commentSecond')
+                .where({
+                 t_id: res[i]._id
+               }).get()
+        relength += res1.length
+        that.data.replaysSecond[i] = new Array()
+        that.data.replaysSecond[i] = res1
+      }
+      var len =  relength + res.length
+      //console.log(that.data.replaysSecond)
+      that.setData({
+        replays: res,
+        //text:that.data.text,
+        replaysSecondArr: that.data.replaysSecond,
+        replayslength:len
       })
   },
+  // getReplaySecond: function(e) {
+  //   // 获取回复列表
+  //   db.collection('commentSecond')
+  //     .where({
+  //       t_id: e.currentTarget.dataset.commentid
+  //     })
+  //     .get({
+  //       success: function(res) {
+  //         // res.data 包含该记录的数据
+  //         //console.log(res)
+  //         that.setData({
+  //           replaysSecond: res.data
+  //         })
+  //       },
+  //       fail: console.error
+  //     })
+  // },
   /**
    * 刷新点赞icon
    */
@@ -137,6 +175,17 @@ Page({
   onReplayClick() {
     wx.navigateTo({
       url: "../replay/replay?id=" + that.data.id + "&openid=" + that.data.openid
+    })
+  },
+  onReplaySecondClick(e) {
+    console.log("1111111111111111"+ e)
+    console.log(e.currentTarget)
+    var id = e.currentTarget.dataset.commentid;
+    var openid = e.currentTarget.dataset.openid;
+
+    wx.navigateTo({
+     // url: "../replaySecond/replay?id=" + that.data.id + "&openid=" + that.data.openid 
+      url: "../replaySecond/replay?id=" + id + "&openid=" + openid 
     })
   },
 

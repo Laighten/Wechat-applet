@@ -1,6 +1,6 @@
 <!--miniprogram/pages/homeDetail/homeDetail.wxml-->
-<view class='container' bindtap='onItemClick'>
-  <view class='container-content'>
+<view class='container ' bindtap='onItemClick'>
+  <view class='container-content '>
     <view class='user-info'>
       <image class='user-head' src='{{topic.user.avatarUrl}}' mode='aspectFill'></image>
       <view class='user-name-time'>
@@ -8,40 +8,97 @@
         <view class='user-publish-time'>{{topic.date}}</view>
       </view>
     </view>
-    <view class='content'>
+    <view class='content '>
       <!-- 显示文本 -->
-      <view wx:if="{{topic.content != ''}} && {{topic.images.length > 0}}">
-        <text class='content-text'>{{topic.content}}</text>
-        <block wx:key='index' wx:for="{{topic.images}}" wx:for-index="idx">
-          <image class='content-img' src='{{item}}' mode='aspectFill' bindtap="previewImg" data-index='{{idx}}'></image>
-        </block>
-      </view>
-      <!-- 显示图片 -->
-      <view wx:elif="{{topic.images.length > 0}}">
-        <block wx:for="{{topic.images}}" wx:for-index="idx">
-          <image class='content-img' src='{{item}}' mode='aspectFill' bindtap="previewImg" data-index='{{idx}}'></image>
-        </block>
-      </view>
-      <!-- 显示文本 -->
-      <block wx:else>
-        <text class='content-text'>{{topic.content}}</text>
+      <!-- wx:else -->
+      <block wx:if="{{topic.content != '' && topic.images.length == 0}}">
+        <text class='content-text '>{{topic.content}}</text>
       </block>
+      <!-- 显示文本 -->
+      <!--  wx:if="{{topic.content != ''}} && {{topic.images.length > 0}}" -->
+      <block wx:elif="{{topic.content != '' && topic.images.length > 0}}">
+        <text class='content-text '>{{topic.content}}</text>
+        <swiper class="screen-swiper" indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:key='index' wx:for="{{topic.images}}" wx:for-index="idx">
+            <swiper-item bindtap="previewImg" data-index='{{idx}}' >
+              <!-- <view class="swiper-item {{item}}"></view> -->
+              <image class='content-img' src='{{item}}' mode='aspectFill' bindtap="previewImg" data-index='{{idx}}'></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </block>
+      <!-- 显示图片 -->
+      <!-- wx:elif="{{topic.images.length > 0}}" -->
+      
+      <block  wx:else>
+        <swiper class="screen-swiper">
+          <scroll-view class='content-scroll' scroll-x='true'>
+            <block wx:key='index' wx:for="{{topic.images}}">
+              <swiper-item bindtap="previewImg" data-index='{{idx}}'>
+                <image class='content-img'  src='{{item}}' mode='aspectFill' bindtap="previewImg" data-index='{{idx}}'></image>
+              </swiper-item>
+            </block>
+          </scroll-view>
+        </swiper>
+      </block>
+      
     </view>
   </view>
+  
   <!-- 显示回复列表 -->
-  <view class='replay_content' wx:if="{{replays.length > 0}}">
-    <text class='tip-text'>-----------以下是回复内容----------</text>
+  <view class="replay-container">
+    <view class="replay-header content-text">
+      <text class="cuIcon-community"> </text>
+      <text class="header-text"> 评论列表 共 {{replayslength}} 条</text>
+    </view>
+  <view class='replay_content ' wx:if="{{replays.length > 0}}">
+      <!-- <text class='tip-text'>-----------以下是回复内容----------</text> -->
+     <!-- <view class="container-line"></view> -->
     <block wx:key='index' wx:for="{{replays}}" wx:for-index="idx">
-      <text>{{idx}} : {{item.content}}</text>
-    </block>
+      <view class="container-line"></view>
+        <view class='user-info' >
+          <image class='re-user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+          <view class='re-user-name-time'>
+            <view class='re-user-name'>{{item.user.nickName}}<text class="replay-text"> 评论了：</text></view>
+            <view class='re-user-publish-time'>{{item.date}}</view>
+          </view>
+          <button class='comment-btn cu-btn line-red sm btn-second'  bindtap='onReplaySecondClick' data-commentId='{{item._id}}' data-openid='{{item._openid}}'>回复</button>
+        </view>
+        <view class='replay-content'>
+          <text class='re-content-text'>{{item.content}}</text>
+        </view>
+        <!-- 二次评论 -->
+        
+        <!-- wx:if="{{replaysSecond[idx].length > 0}}" -->
+        
+        <view class="replaySecond-container" > 
+          <block wx:key='index' wx:for="{{replaysSecondArr[idx]}}" wx:for-item="subitem">
+            <view class="container-line"></view>
+            <view class='user-info' >
+                <image class='re-user-head' src='{{subitem.user.avatarUrl}}' mode='aspectFill'></image>
+                <view class='re-user-name-time'>
+                  <view class='re-user-name'>{{subitem.user.nickName}}<text class="replay-text"> 评论了 </text>{{item.user.nickName}}</view>
+                  <view class='re-user-publish-time'>{{subitem.date}}</view>
+                </view>
+              </view>
+               <view class='replay-content'>
+                <text class='re-content-text'>{{subitem.content}}</text>
+              </view> 
+          
+        </block>
+          
+        </view>
+      </block>
+  </view>
   </view>
   <!-- <view class='line'>文末</view> -->
   <view class='like-container' wx:if='{{isLike}}'>
-    <button class='btn-class'  bindtap='onReplayClick'>回复</button>
+    <button class='btn-class '  bindtap='onReplayClick'>回复</button>
     <image class='like-icon' src='../../images/topic-detail/like.png' bindtap='onLikeClick' ></image>
   </view>
   <view class='like-container' wx:else>
-    <button class='btn-class'  bindtap='onReplayClick'>回复</button>
+    <button class='btn-class  '  bindtap='onReplayClick'>回复</button>
     <image class='like-icon' src='../../images/topic-detail/unlike.png' bindtap='onLikeClick'></image>
   </view>
 

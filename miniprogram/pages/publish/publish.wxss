@@ -4,7 +4,17 @@
   height: 100%;
   width: 100%;
 }
+.text-area{
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 2px 2px blur #ccc;
+  border-radius: 5px;
 
+
+}
 textarea {
   width: 700rpx;
   padding: 25rpx 0;
@@ -14,11 +24,17 @@ textarea {
   background-color: #f3efef;
   padding: 0 25rpx;
 }
+.image-area{
+  width:700rpx;
+  height: 415rpx;
+  border: 1px #ccc dashed;
+  margin: 20px auto;
 
+}
 .image-group {
   display: flex;
   white-space: nowrap;
-  margin-top: 30px;
+  margin-top:10px;
 }
 
 .image-group view{
@@ -46,7 +62,7 @@ textarea {
   display: flex;
   flex-direction: column;
   width: 100%;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   margin: 0 auto;
   align-items: center;
@@ -58,7 +74,7 @@ textarea {
   line-height: 45px;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: rgb(113, 98, 250);
+  background-color: #1cbbb4;
   color: #fff;
   border-radius: 50px;
 }
@@ -67,7 +83,7 @@ textarea {
   width: 220px;
   height: 45px;
   line-height: 45px;
-  background-color: #d50310;
+  background-color: #da564c;
   color: #fff;
   border-radius: 50px;
   margin-bottom: 20px;

@@ -1,7 +1,7 @@
 {
-  "backgroundColor": "#5495e6",
+  "backgroundColor": "#da564c",
   "navigationBarTitleText": "濛阳便民生活小程序",
-  "navigationBarBackgroundColor": "#5495e6",
+  "navigationBarBackgroundColor": "#da564c",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh": true
 }

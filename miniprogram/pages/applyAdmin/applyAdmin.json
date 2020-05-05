@@ -1,7 +1,7 @@
 {
   "usingComponents": {},
-  "backgroundColor": "#5495e6",
+  "backgroundColor": "#da564c",
   "navigationBarTitleText": "申请管理员",
-  "navigationBarBackgroundColor": "#5495e6",
+  "navigationBarBackgroundColor": "#da564c",
   "navigationBarTextStyle": "white"
 }

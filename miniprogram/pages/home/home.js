@@ -58,8 +58,8 @@ Page({
   onItemClick: function(event) {
     var id = event.currentTarget.dataset.topicid;
     var openid = event.currentTarget.dataset.openid;
-    console.log(id);
-    console.log(openid);
+    //console.log(id);
+    console.log(event);
     wx.navigateTo({
       url: "../homeDetail/homeDetail?id=" + id + "&openid=" + openid
     })

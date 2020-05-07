@@ -195,3 +195,10 @@
 .button-space{
   text-align: right
 }
+
+.blank1{
+  margin-left: 160rpx;
+}
+.blank2{
+  margin-left: 15rpx;
+}

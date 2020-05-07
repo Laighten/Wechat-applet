@@ -10,7 +10,7 @@
 </view>
 
 <block wx:key='index' wx:for='{{waitAdds}}' wx:for-index="idx" wx:if="{{showIndex1 == 1}}">
-	<view class='container' data-topicId='{{item._id}}'>
+	<view class='radius shadow-warp bg-white margin-top' data-topicId='{{item._id}}'>
 		<view class='container-content'>
 			<view class='user-info'>
 				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
@@ -45,7 +45,7 @@
 				</block>
 			</view>
 		</view>
-		<view class='container-line'></view>
+
 	</view>
 </block>
 
@@ -59,10 +59,10 @@
 </view>
 
 <block wx:key='index' wx:for='{{topics}}' wx:for-index="idx" wx:if="{{showIndex2 == 1}}">
-	<view class='container' data-topicId='{{item._id}}'>
+	<view class='radius shadow-warp bg-white margin-top' data-topicId='{{item._id}}'>
 		<view class='container-content'>
 			<view class='user-info'>
-				<image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
 					<view class='user-name'>{{item.user.nickName}}</view>
 					<view class='user-publish-time'>{{item.date}}</view>
@@ -94,7 +94,6 @@
 			</view>
 		</view>
 
-		<view class='container-line'></view>
 	</view>
 </block>
 
@@ -108,10 +107,10 @@
 </view>
 
 <block wx:key='index' wx:for='{{denys}}' wx:for-index="idx" wx:if="{{showIndex3 == 1}}">
-	<view class='container' bindtap='onItemClick' data-topicId='{{item._id}}'>
+	<view class='radius shadow-warp bg-white margin-top' bindtap='onItemClick' data-topicId='{{item._id}}'>
 		<view class='container-content'>
 			<view class='user-info'>
-				<image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
 					<view class='user-name'>{{item.user.nickName}}</view>
 					<view class='user-publish-time'>{{item.date}}</view>
@@ -143,6 +142,5 @@
 			</view>
 		</view>
 
-		<view class='container-line'></view>
 	</view>
 </block>

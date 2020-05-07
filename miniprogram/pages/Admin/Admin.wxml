@@ -22,15 +22,15 @@
 <view class='container-line1'></view>
 
 <block wx:key='index' wx:for='{{waitAdds}}' wx:for-index="idx" wx:if="{{showIndex == 1}}">
-  <view class='container' bindtap=''>
+  <view class='radius shadow-warp bg-white margin-top' bindtap=''>
     <view class='container-content'>
       <view class='user-info'>
-        <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
         <view class='user-name-time'>
               <view class='user-name'>{{item.user.nickName}}
-                  <button bindtap="access" type='primary' data-topicId='{{item._id}}' size='mini'>通过</button>
-                  <button bindtap="notAccess" type='warn' data-topicId='{{item._id}}' size='mini'>不通过</button>
-              </view>
+                  <button bindtap="access" type='primary' data-topicId='{{item._id}}' class="cu-btn round shadow item-right bg-green blank1">通过</button>
+                  <button bindtap="notAccess" type='warn' data-topicId='{{item._id}}' class="cu-btn bg-red round shadow item-right blank2">不通过</button>
+                  </view>
           <view class='user-publish-time'>{{item.date}}</view>
         </view>
       </view>
@@ -60,6 +60,5 @@
       </view>
     </view>
 
-    <view class='container-line2'></view>
   </view>
 </block>

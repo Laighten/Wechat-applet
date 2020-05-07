@@ -62,6 +62,62 @@
 					"id": -1,
 					"name": "pages/MyMessage/MyMessage",
 					"pathName": "pages/MyMessage/MyMessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/checkAdmin/checkAdmin",
+					"pathName": "pages/me/checkAdmin/checkAdmin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/home/home",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/MyMessage/MyMessage",
+					"pathName": "pages/MyMessage/MyMessage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/advance/advance",
+					"pathName": "pages/advance/advance",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Admin/Admin",
+					"pathName": "pages/Admin/Admin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/home/home",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
 					"scene": null
 				}
 			]

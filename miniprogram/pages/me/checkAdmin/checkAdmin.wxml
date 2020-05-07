@@ -9,10 +9,10 @@
 </view>
 
 <block wx:key='index' wx:for='{{adminWait}}' wx:for-index="idx" wx:if="{{showIndex0 == 1}}">
-  <view class='container' bindtap=''>
+  <view class='radius shadow-warp bg-white margin-top' bindtap=''>
     <view class='container-content'>
       <view class='user-info'>
-        <image wx:if='{{item.user.avatarUrl}}' class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
         <view class='user-name-time'>
           <view class='user-name'>姓名：{{item.name}}
 
@@ -56,7 +56,6 @@
       </view>
     </view>
 
-    <view class='container-line2'></view>
   </view>
 </block>
 
@@ -81,10 +80,10 @@
 </view>
 
 <block wx:key='index' wx:for='{{adminNoAccess}}' wx:for-index="idx" wx:if="{{showIndex1 == 1}}">
-  <view class='container' bindtap=''>
+  <view class='radius shadow-warp bg-white margin-top' bindtap=''>
     <view class='container-content'>
       <view class='user-info'>
-        <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
         <view class='user-name-time'>
           <view class='user-name'>姓名：{{item.name}}
             <view class="cu-tag round bg-orange light wait">未通过</view>
@@ -123,7 +122,6 @@
       </view>
     </view>
 
-    <view class='container-line2'></view>
   </view>
 </block>
 
@@ -145,14 +143,14 @@
   </view>
 </view>
 <block wx:key='index' wx:for='{{adminAccess}}' wx:for-index="idx" wx:if="{{showIndex2 == 1}}">
-  <view class='container' bindtap=''>
+  <view class='radius shadow-warp bg-white margin-top' bindtap=''>
     <view class='container-content'>
       <view class='user-info'>
-        <image wx:if='{{item.user.avatarUrl}}' class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
+        <view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
         <view class='user-name-time'>
           <view class='user-name'>姓名：{{item.name}}
-            <view class="cu-tag round bg-orange light wait">通过</view>
-            <button data-adminid="{{item._id}}" bindtap="notAccess" class="cu-btn bg-red round  shadow item-right">不通过</button>
+            <view class="cu-tag round bg-olive light wait">通过</view>
+            <button data-adminid="{{item._id}}" bindtap="notAccess" class="cu-btn bg-red round  shadow item-right">撤销资格</button>
 
           </view>
           <view class='user-publish-time'>性别：{{item.gender}}</view>
@@ -187,6 +185,5 @@
       </view>
     </view>
 
-    <view class='container-line2'></view>
   </view>
 </block>

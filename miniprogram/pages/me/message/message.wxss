@@ -1,0 +1,7 @@
+/* miniprogram/pages/me/message/message.wxss */
+.cu-item-h{
+  height: 180rpx;
+}
+.text-size{
+  font-size: 35rpx;
+}

@@ -12,7 +12,7 @@ Page({
     firstopenid:'',
     user:{},
     content: '',
-    
+    itemId:'',//评论的通讯的id
   },
 
   /**
@@ -22,6 +22,7 @@ Page({
     that = this;
     that.data.id = options.id;
     that.data.openid = options.openid;
+    that.data.itemId = options.itemId;
     that.jugdeUserLogin();
   },
    //获取当前时间并转换
@@ -92,12 +93,12 @@ Page({
     //   },
     saveReplay: function() {
       this.toDate();
-      if(that.data.content.trim() == ''){
+      if (that.data.content.trim() == '') {
         wx.showToast({
           icon: 'none',
           title: '写点东西吧',
         })
-      }else{
+      } else {
         db.collection('commentSecond').add({
           // data 字段表示需新增的 JSON 数据
           data: {
@@ -108,24 +109,24 @@ Page({
             u_id: that.data.openid,
             t_id: that.data.id,
             user: that.data.user,
-           
+            readState: 0,        //标记为未读状态
+            topicId: that.data.itemId,
           },
-    
-          success: function(res) {
+
+          success: function (res) {
             wx.showToast({
               title: '发射成功',
             })
-            setTimeout(function() {
+            setTimeout(function () {
               wx.navigateBack({
                 url: "../homeDetail/homeDetail?id=" + that.data.id + "&openid=" + that.data.openid
               })
             }, 1500)
-    
+
           },
           fail: console.error
         })
       }
-      
     },
 
 

@@ -31,7 +31,7 @@ Page({
         state: 1
       }
     }).then(res => {
-      
+      console.log(res)
       if(res.result.stats.updated>0){
         wx.showToast({
           title: '审核通过',

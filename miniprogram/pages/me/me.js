@@ -22,6 +22,7 @@ Page({
   data: {
     isAdmin: 0,
     isSuperAdmin: null,
+    messageNum:0,
   },
 
   /**
@@ -32,6 +33,20 @@ Page({
     that.setData({
       isSuperAdmin: app.globalData.superAdmin
     })
+    db.collection('commentSecond')
+      .where({
+        u_id: app.globalData.openid,
+        readState: 0
+      }).count({
+        success: function (res) {
+          //console.log(res.total)
+          if (res.total != 0) {
+            that.setData({
+              messageNum: res.total
+            });
+          }
+        }
+      })
     //console.log(app.globalData.superAdmin)
     //查看是否为管理员
     db.collection('admin').where({
@@ -58,11 +73,11 @@ Page({
     })
   },
   /**
-   * 发布历史
+   * 我的消息
    */
-  onHistoryClick: function (event) {
+  onMessageClick: function (event) {
     wx.navigateTo({
-      url: '../history/history',
+      url: './message/message',
     })
   },
   /*
@@ -129,6 +144,12 @@ Page({
 
   clickInvitivation: function (event) {
     this.actioncnt();
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    this.onLoad()
   },
   /**
      * 页面相关事件处理函数--监听用户下拉动作

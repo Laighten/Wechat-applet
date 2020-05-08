@@ -52,12 +52,12 @@ Page({
 
   saveReplay: function() {
     this.toDate();
-    if(that.data.content.trim() == ''){
+    if (that.data.content.trim() == '') {
       wx.showToast({
         icon: 'none',
         title: '写点东西吧',
       })
-    }else{
+    } else {
       db.collection('comment').add({
         // data 字段表示需新增的 JSON 数据
         data: {
@@ -68,7 +68,7 @@ Page({
           u_id: that.data.openid,
           t_id: that.data.id,
           user: that.data.user,
-          secondreplay:{}
+          secondreplay: {}
         },
         // data: {
         //   content: that.data.content,
@@ -78,22 +78,21 @@ Page({
         //   user: that.data.user,
         //   isLike: that.data.isLike,
         // },
-  
-        success: function(res) {
+
+        success: function (res) {
           wx.showToast({
             title: '发射成功',
           })
-          setTimeout(function() {
+          setTimeout(function () {
             wx.navigateBack({
               url: "../homeDetail/homeDetail?id=" + that.data.id + "&openid=" + that.data.openid
             })
           }, 1500)
-  
+
         },
         fail: console.error
       })
     }
-
   },
     
   jugdeUserLogin: function(event) {

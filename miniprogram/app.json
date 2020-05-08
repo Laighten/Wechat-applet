@@ -12,7 +12,9 @@
     "pages/MyMessage/MyMessage",
     "pages/Admin/Admin",
     "pages/applyAdmin/applyAdmin",
-    "pages/me/checkAdmin/checkAdmin"
+    "pages/me/checkAdmin/checkAdmin",
+    "pages/me/message/message",
+    "pages/replaySecond/replay"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

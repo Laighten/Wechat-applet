@@ -182,10 +182,10 @@ Page({
     console.log(e.currentTarget)
     var id = e.currentTarget.dataset.commentid;
     var openid = e.currentTarget.dataset.openid;
-
+    
     wx.navigateTo({
      // url: "../replaySecond/replay?id=" + that.data.id + "&openid=" + that.data.openid 
-      url: "../replaySecond/replay?id=" + id + "&openid=" + openid 
+      url: "../replaySecond/replay?id=" + id + "&openid=" + openid + "&itemId=" + that.data.id
     })
   },
 

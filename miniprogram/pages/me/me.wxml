@@ -29,17 +29,17 @@
 		<view class='right'>></view>
 	</view>
 
-	<!-- 发布历史 -->
-	<view class='hr'></view>
-	<view class='item' bindtap='onHistoryClick'>
-		<view class='icon'>
-			<image src='../../images/me/history.png' style="width:22px;height:21px;"></image>
-		</view>
-		<view class='itemName'>
-			<view>我的发布历史</view>
-		</view>
-		<view class='right'>></view>
-	</view>
+	<!-- 我的消息 -->
+  <view class='hr'></view>
+  <view class='item' bindtap='onMessageClick'>
+    <view class='icon'>
+      <image src='../../images/me/history.png' style="width:22px;height:21px;"></image>
+    </view>
+    <view class='itemName'>
+      <view>我的消息</view>
+    </view>
+    <view class='right'><view class="cu-tag round bg-red sm" wx:if="{{messageNum != 0}}"><block wx:if="{{messageNum!=1}}">{{messageNum>99?"99+":messageNum}}</block></view></view>
+  </view>
 	<!-- 邀请好友 -->
 	<view class='line'></view>
 	<view class='item' bindtap='clickInvitivation'>

@@ -146,12 +146,15 @@ Page({
     }
   },
   getOrderAddr: function (str) {
-    for (var i = 0; i < str.length; i++) {
-      if (str.charAt(i) == '县' || str.charAt(i) == '区') {
-        that.data.addr = str.substring(0, i + 1)
-      }
-    }
-  },
+        for (var  i  =  0; i  <  str.length; i++) {
+            if (str.charAt(i)  ==  '县'  ||  str.charAt(i)  ==  '区') {
+                that.data.addr  =  str.substring(0, i + 1)
+                return
+            }
+        }
+        var  i  =  str.split('').lastIndexOf('市')
+        that.data.addr  =  str.substring(0, i + 1)
+    },
   /**
    * 保存到待审核集合中
    */

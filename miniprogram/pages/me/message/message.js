@@ -45,7 +45,7 @@ Page({
         wx.showToast({
           title: '标记成功',
         })
-        this.onLoad()
+        that.onLoad()
       }
       else {
         wx.showToast({

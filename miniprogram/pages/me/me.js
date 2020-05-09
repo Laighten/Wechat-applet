@@ -40,11 +40,9 @@ Page({
       }).count({
         success: function (res) {
           //console.log(res.total)
-          if (res.total != 0) {
-            that.setData({
-              messageNum: res.total
-            });
-          }
+          that.setData({
+            messageNum: res.total
+          });
         }
       })
     //console.log(app.globalData.superAdmin)

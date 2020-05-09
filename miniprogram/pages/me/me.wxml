@@ -1,35 +1,35 @@
 <!--pages/mycenter/mycenter.wxml-->
 <view class='amountBg'>
-	<view class='img'>
-		<open-data type="userAvatarUrl"></open-data>
-	</view>
-	<view class='account'>
-		<view class='nick-name'>
-			<open-data type="userNickName" lang="zh_CN"></open-data>
-		</view>
-		<view class='address'>
-			<open-data type="userCountry" lang="zh_CN"></open-data>·
-			<open-data type="userProvince" lang="zh_CN"></open-data>·
-			<open-data type="userCity" lang="zh_CN"></open-data>
-		</view>
-	</view>
+  <view class='img'>
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class='account'>
+    <view class='nick-name'>
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+    </view>
+    <view class='address'>
+      <open-data type="userCountry" lang="zh_CN"></open-data>·
+      <open-data type="userProvince" lang="zh_CN"></open-data>·
+      <open-data type="userCity" lang="zh_CN"></open-data>
+    </view>
+  </view>
 </view>
 
 <!-- 底部列表 -->
 <view class='content'>
-	<!-- 收藏列表 -->
-	<view class='line'></view>
-	<view class='item' bindtap='onCollectClick'>
-		<view class='icon'>
-			<image src='../../images/me/collect.png' style="width:22px;height:21px;"></image>
-		</view>
-		<view class='itemName'>
-			<view>收藏列表</view>
-		</view>
-		<view class='right'>></view>
-	</view>
+  <!-- 收藏列表 -->
+  <view class='line'></view>
+  <view class='item' bindtap='onCollectClick'>
+    <view class='icon'>
+      <image src='../../images/me/collect.png' style="width:22px;height:21px;"></image>
+    </view>
+    <view class='itemName'>
+      <view>收藏列表</view>
+    </view>
+    <view class='right'>></view>
+  </view>
 
-	<!-- 我的消息 -->
+  <!-- 我的消息 -->
   <view class='hr'></view>
   <view class='item' bindtap='onMessageClick'>
     <view class='icon'>
@@ -38,67 +38,71 @@
     <view class='itemName'>
       <view>我的消息</view>
     </view>
-    <view class='right'><view class="cu-tag round bg-red sm" wx:if="{{messageNum != 0}}"><block wx:if="{{messageNum!=1}}">{{messageNum>99?"99+":messageNum}}</block></view></view>
+    <view class='right'>
+      <view class="cu-tag round bg-red sm" wx:if="{{messageNum != 0}}">
+        <block wx:if="{{messageNum!=1}}">{{messageNum>99?"99+":messageNum}}</block>
+      </view>
+    </view>
   </view>
-	<!-- 邀请好友 -->
-	<view class='line'></view>
-	<view class='item' bindtap='clickInvitivation'>
-		<view class='icon'>
-			<image src='../../images/me/invitation.png' style="width:22px;height:21px;"></image>
-		</view>
-		<view class='itemName'>
-			<view>邀请好友</view>
-		</view>
-		<view class='right'>
-			<text class='opr'>一起来玩~</text>></view>
-	</view>
-	<view class='hr'></view>
-	<!-- 产品意见 -->
-	<view class='item' bindtap='onAdvanceClick'>
-		<view class='icon'>
-			<image src='../../images/me/advice.png' style="width:22px;height:21px;"></image>
-		</view>
-		<view class='itemName'>
-			<view>产品意见</view>
-		</view>
-		<view class='right'>></view>
-	</view>
-	<view class='hr'></view>
-	<view class='line'></view>
+  <!-- 邀请好友 -->
+  <view class='line'></view>
+  <view class='item' bindtap='clickInvitivation'>
+    <view class='icon'>
+      <image src='../../images/me/invitation.png' style="width:22px;height:21px;"></image>
+    </view>
+    <view class='itemName'>
+      <view>邀请好友</view>
+    </view>
+    <view class='right'>
+      <text class='opr'>一起来玩~</text>></view>
+  </view>
+  <view class='hr'></view>
+  <!-- 产品意见 -->
+  <view class='item' bindtap='onAdvanceClick'>
+    <view class='icon'>
+      <image src='../../images/me/advice.png' style="width:22px;height:21px;"></image>
+    </view>
+    <view class='itemName'>
+      <view>产品意见</view>
+    </view>
+    <view class='right'>></view>
+  </view>
+  <view class='hr'></view>
+  <view class='line'></view>
 
-	<view wx:if='{{isAdmin==1}}'>
-		<view class='item' bindtap='onAdminClick'>
-			<view class='icon'>
-				<image src='../../images/Admin/Admin.png' style="width:22px;height:21px;"></image>
-			</view>
-			<view class='itemName'>
-				<view>管理员界面</view>
-			</view>
-			<view class='right'>></view>
-		</view>
-	</view>
-	<view wx:else>
-		<view class='item' bindtap='applyAdminClick'>
-			<view class='icon'>
-				<image src='../../images/Admin/Admin.png' style="width:22px;height:21px;"></image>
-			</view>
-			<view class='itemName'>
-				<view>申请管理权限</view>
-			</view>
-			<view class='right'>></view>
-		</view>
-	</view>
-	<view wx:if='{{isSuperAdmin}}'>
-		<view class='hr'></view>
-		<view class='item' bindtap='checkAdminClick'>
-			<view class='icon'>
-				<image src='../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
-			</view>
-			<view class='itemName'>
-				<view>管理员审核</view>
-			</view>
-			<view class='right'>></view>
-		</view>
-	</view>
+  <view wx:if='{{isAdmin==1}}'>
+    <view class='item' bindtap='onAdminClick'>
+      <view class='icon'>
+        <image src='../../images/Admin/Admin.png' style="width:22px;height:21px;"></image>
+      </view>
+      <view class='itemName'>
+        <view>管理员界面</view>
+      </view>
+      <view class='right'>></view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class='item' bindtap='applyAdminClick'>
+      <view class='icon'>
+        <image src='../../images/Admin/Admin.png' style="width:22px;height:21px;"></image>
+      </view>
+      <view class='itemName'>
+        <view>申请管理权限</view>
+      </view>
+      <view class='right'>></view>
+    </view>
+  </view>
+  <view wx:if='{{isSuperAdmin}}'>
+    <view class='hr'></view>
+    <view class='item' bindtap='checkAdminClick'>
+      <view class='icon'>
+        <image src='../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
+      </view>
+      <view class='itemName'>
+        <view>管理员审核</view>
+      </view>
+      <view class='right'>></view>
+    </view>
+  </view>
 
 </view>

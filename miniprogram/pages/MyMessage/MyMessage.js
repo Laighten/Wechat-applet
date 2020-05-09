@@ -3,6 +3,7 @@ var that
 const db = wx.cloud.database();
 var userOpenId = ''
 
+
 Page({
 
   /**
@@ -190,14 +191,43 @@ Page({
   /**
    * item 点击
    */
-  onItemClick: function (event) {
+  // onItemClick: function (event) {
+  //   var id = event.currentTarget.dataset.topicid;
+  //   //console.log(id);
+  //   wx.navigateTo({
+  //     url: "../homeDetail/homeDetail?id=" + id
+  //   })
+  // },
+  delOneH: function (event) {
     var id = event.currentTarget.dataset.topicid;
-    //console.log(id);
+    wx.cloud.callFunction({
+      name: 'deleteOne',
+      data: {
+        _id: id,
+        num: 2
+      }
+    }).then(console.log);
+
+  },
+  delTwoH:function(event){
+    var id = event.currentTarget.dataset.topicid;
+    wx.cloud.callFunction({
+      name: 'deleteOne',
+      data: {
+        _id: id,
+        num: 3
+      }
+    }).then(console.log);
+   
+  },
+  
+  reWrite:function(event){
+    var id = event.currentTarget.dataset.topicid;
+    app.globalData.idl = id
     wx.navigateTo({
-      url: "../homeDetail/homeDetail?id=" + id
+      url: "RePublish/republish"
     })
   },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */

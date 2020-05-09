@@ -197,7 +197,7 @@
 }
 
 .blank1{
-  margin-left: 160rpx;
+  margin-left: 30%;
 }
 .blank2{
   margin-left: 15rpx;

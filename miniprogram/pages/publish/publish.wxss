@@ -58,6 +58,9 @@ textarea {
   vertical-align: top;
   position: absolute
 }
+.getLocation-container{
+  margin: 10px 20px;
+}
 .btn-func {
   display: flex;
   flex-direction: column;

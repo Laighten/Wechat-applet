@@ -152,6 +152,8 @@ Page({
             images: that.data.waitAdds[i].images,
             isLike: false,
             user: that.data.waitAdds[i].user,
+            address: that.data.waitAdds[i].address,
+            addr: that.data.waitAdds[i].addr
           },
           // success: function (res) {
           //     that.accessWell()
@@ -168,7 +170,8 @@ Page({
    
       name: 'deleteOne',
       data: {
-        _id:id
+        _id:id,
+        num: 1
       }
     }).then(console.log);
     //that.caxundata(id);
@@ -207,7 +210,8 @@ Page({
 
       name: 'deleteOne',
       data: {
-        _id: id
+        _id: id,
+        num:1
       }
     }).then(console.log);
     //that.caxundata(id);
@@ -235,10 +239,4 @@ Page({
     that = this
     that.getData(that.data.page);
   }
-  // onPullDownRefresh: function () {
-  //   wx.showNavigationBarLoading() //在标题栏中显示加载
-  //   //console.log('pulldown');
-  //   that.getData(that.data.page);
-  // }
-
 })

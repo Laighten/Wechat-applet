@@ -8,7 +8,13 @@
   </view>
 
   <view class='btn-func'>
-    <button class="btn" formType='submit' bindtap='saveReplay' open-type="getUserInfo">发射神评</button>
+    <!-- <button class="btn" formType='submit' bindtap='saveReplay' open-type="getUserInfo">发射神评</button> -->
+    <block wx:if="{{!disabled}}">
+      <button class="btn" formType='submit'  open-type="getUserInfo" bindtap='saveReplay'>发射神评</button>
+    </block>
+    <block  wx:if="{{disabled}}">
+      <button class="btn" >发射神评</button>
+    </block>
   </view>
 
 </view>

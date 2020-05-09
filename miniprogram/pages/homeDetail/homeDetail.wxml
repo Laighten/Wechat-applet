@@ -63,7 +63,13 @@
             <view class='re-user-name'>{{item.user.nickName}}<text class="replay-text"> 评论了：</text></view>
             <view class='re-user-publish-time'>{{item.date}}</view>
           </view>
-          <button class='comment-btn cu-btn line-red sm btn-second'  bindtap='onReplaySecondClick' data-commentId='{{item._id}}' data-openid='{{item._openid}}'>回复</button>
+          <!-- <button class='comment-btn cu-btn line-red sm btn-second'  bindtap='onReplaySecondClick' data-commentId='{{item._id}}' data-openid='{{item._openid}}' >回复</button> -->
+          <block wx:if="{{!disabled2}}">
+            <button class='comment-btn cu-btn line-red sm btn-second'  bindtap='onReplaySecondClick' data-commentId='{{item._id}}' data-openid='{{item._openid}}' >回复</button>
+          </block>
+          <block  wx:if="{{disabled2}}">
+            <button class='comment-btn cu-btn line-red sm btn-second'>回复</button>
+          </block>
         </view>
         <view class='replay-content'>
           <text class='re-content-text'>{{item.content}}</text>
@@ -94,11 +100,23 @@
   </view>
   <!-- <view class='line'>文末</view> -->
   <view class='like-container' wx:if='{{isLike}}'>
-    <button class='btn-class '  bindtap='onReplayClick'>回复</button>
+    <block wx:if="{{!disabled1}}">
+      <button class='btn-class '  bindtap='onReplayClick'>回复</button>
+    </block>
+    <block  wx:if="{{disabled1}}">
+      <button class='btn-class '>回复</button>
+    </block>
+    <!-- <button class='btn-class '  bindtap='onReplayClick'>回复</button> -->
     <image class='like-icon' src='../../images/topic-detail/like.png' bindtap='onLikeClick' ></image>
   </view>
   <view class='like-container' wx:else>
-    <button class='btn-class  '  bindtap='onReplayClick'>回复</button>
+    <!-- <button class='btn-class  '  bindtap='onReplayClick'>回复</button> -->
+    <block wx:if="{{!disabled1}}">
+      <button class='btn-class '  bindtap='onReplayClick'>回复</button>
+    </block>
+    <block  wx:if="{{disabled1}}">
+      <button class='btn-class '>回复</button>
+    </block>
     <image class='like-icon' src='../../images/topic-detail/unlike.png' bindtap='onLikeClick'></image>
   </view>
 

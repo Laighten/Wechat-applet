@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //canIUse: wx.canIUse('button.open-type.getUserInfo'),
     topic: {},
     comments:{},
     id: '',
@@ -18,6 +19,9 @@ Page({
     interval: 2000,
     duration: 500,
     replaysSecond:[],
+    disabled1:false,
+    disabled2:false
+    
     
   },
 
@@ -27,6 +31,9 @@ Page({
   onLoad: function(options) {
 
     that = this;
+    console.log('disabled1'+that.data.disabled1)
+    console.log('disabled2'+that.data.disabled2)
+    
     that.data.id = options.id;
     that.data.openid = options.openid;
     // 获取话题信息
@@ -37,6 +44,7 @@ Page({
           topic: that.topic,
         })
       }
+
     })
 
     // 获取收藏情况
@@ -62,8 +70,13 @@ Page({
   onShow: function() {
     // 获取回复列表
     that.getReplay()
-    //that.getReplaySecond()
-    //console.log(replays)
+    that.setData({
+      disabled1 : false,
+      disabled2 : false
+    })
+    
+
+    
   },
 
   getReplay:async function() {
@@ -93,23 +106,7 @@ Page({
         replayslength:len
       })
   },
-  // getReplaySecond: function(e) {
-  //   // 获取回复列表
-  //   db.collection('commentSecond')
-  //     .where({
-  //       t_id: e.currentTarget.dataset.commentid
-  //     })
-  //     .get({
-  //       success: function(res) {
-  //         // res.data 包含该记录的数据
-  //         //console.log(res)
-  //         that.setData({
-  //           replaysSecond: res.data
-  //         })
-  //       },
-  //       fail: console.error
-  //     })
-  // },
+  
   /**
    * 刷新点赞icon
    */
@@ -173,22 +170,30 @@ Page({
    * 跳转回复页面
    */
   onReplayClick() {
+    that.setData({
+      disabled1 : true
+    })
     wx.navigateTo({
       url: "../replay/replay?id=" + that.data.id + "&openid=" + that.data.openid
     })
   },
   onReplaySecondClick(e) {
-    console.log("1111111111111111"+ e)
-    console.log(e.currentTarget)
+    that.setData({
+      disabled2 : true
+    })
+    //that.jugdeUserLogin();
+    //console.log("1111111111111111"+ e)
+    //console.log(e.currentTarget)
     var id = e.currentTarget.dataset.commentid;
     var openid = e.currentTarget.dataset.openid;
-    
+
     wx.navigateTo({
-     // url: "../replaySecond/replay?id=" + that.data.id + "&openid=" + that.data.openid 
+      //url: "../replaySecond/replay?id=" + that.data.id + "&openid=" + that.data.openid,
+      //url: "../replaySecond/replay?id=" + id + "&openid=" + openid 
       url: "../replaySecond/replay?id=" + id + "&openid=" + openid + "&itemId=" + that.data.id
     })
   },
-
+  
   /**
    * 用户点击右上角分享
    */

@@ -64,7 +64,9 @@
 			<view class='user-info'>
 				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
-					<view class='user-name'>{{item.user.nickName}}</view>
+					<view class='user-name'>{{item.user.nickName}}
+          <button bindtap="delOneH" data-topicId='{{item._id}}' class="cu-btn bg-red item-right blank1">删除</button>
+          </view>
 					<view class='user-publish-time'>{{item.date}}</view>
 				</view>
 			</view>
@@ -107,12 +109,15 @@
 </view>
 
 <block wx:key='index' wx:for='{{denys}}' wx:for-index="idx" wx:if="{{showIndex3 == 1}}">
-	<view class='radius shadow-warp bg-white margin-top' bindtap='onItemClick' data-topicId='{{item._id}}'>
+	<view class='radius shadow-warp bg-white margin-top' data-topicId='{{item._id}}'>
 		<view class='container-content'>
 			<view class='user-info'>
 				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
-					<view class='user-name'>{{item.user.nickName}}</view>
+					<view class='user-name'>{{item.user.nickName}}
+               <button bindtap="reWrite"  data-topicId='{{item._id}}' class="cu-btn bg-grey item-right  blank2">重新编写</button>
+                <button bindtap="delTwoH"  data-topicId='{{item._id}}' class="cu-btn bg-red item-right  blank3">删除</button>
+          </view>
 					<view class='user-publish-time'>{{item.date}}</view>
 				</view>
 			</view>

@@ -12,6 +12,14 @@ Page({
     images: [],
     user: {},
     isLike: false,
+    //定位数据
+    name: '',
+    address: '',
+    latitude: '',
+    longitude: '',
+    addr: '',
+    disabled: false,
+    isContinue: false
   },
   /**
     * 生命周期函数--监听页面加载
@@ -19,6 +27,25 @@ Page({
   onLoad: function (options) {
     that = this
     that.jugdeUserLogin();
+  },
+  //获取定位
+  getLocation: function () {
+    //that.jugdeUserLogin();
+    var _this = this;
+    wx.chooseLocation({
+      success: function (res) {
+        var name = res.name
+        var address = res.address
+        var latitude = res.latitude
+        var longitude = res.longitude
+        _this.setData({
+          name: name,
+          address: address,
+          latitude: latitude,
+          longitude: longitude
+        })
+      }
+    })
   },
   /**
    * 获取填写的内容
@@ -89,26 +116,48 @@ Page({
     //console.log('图片：', that.data.images)
     this.toDate();
     this.data.content = e.detail.value['input-content'];
-    if (this.data.canIUse) {
-      if (this.data.images.length > 0) {
+    if (JSON.stringify(this.data.user) !== "{}") {
+      if (this.data.images.length > 0 && this.data.address != '') {
         this.saveDataToServer();
-      } else if (this.data.content.trim() != '') {
+      } else if (this.data.content.trim() != '' && this.data.address != '') {
         this.saveDataToServer();
-      } else {
+      } else if (this.data.images.length == 0 && this.data.content.trim() == '') {
+        this.setData({
+          disabled: false
+        })
         wx.showToast({
           icon: 'none',
           title: '写点东西吧',
         })
+      } else {
+        this.setData({
+          disabled: false
+        })
+        wx.showToast({
+          icon: 'none',
+          title: '地址必填哦',
+        })
       }
     } else {
+      this.setData({
+        disabled: false
+      })
       this.jugdeUserLogin();
+    }
+  },
+  getOrderAddr: function (str) {
+    for (var i = 0; i < str.length; i++) {
+      if (str.charAt(i) == '县' || str.charAt(i) == '区') {
+        that.data.addr = str.substring(0, i + 1)
+      }
     }
   },
   /**
    * 保存到待审核集合中
    */
   saveDataToServer: function(event) {
-    
+    that.getOrderAddr(that.data.address)
+    console.log(that.data.addr)
     db.collection('waitAdd').add({
       // data 字段表示需新增的 JSON 数据
       data: {
@@ -117,6 +166,8 @@ Page({
         date: that.data.date,
         images: that.data.images,
         user: that.data.user,
+        address: that.data.address,
+        addr: that.data.addr,
         isLike: that.data.isLike,
       },
       success: function(res) {
@@ -125,10 +176,12 @@ Page({
         // 清空数据
         that.data.content = "";
         that.data.images = [];
-
+        that.data.address = ''
         that.setData({
           textContent: '',
           images: [],
+          address: '',
+          disabled: false
         })
 
         that.showTipAndSwitchTab();
@@ -174,28 +227,6 @@ Page({
     })
   },
 
-  /**
-   * 添加到发布集合中
-   */
-  // saveToHistoryServer: function(event) {
-  //   db.collection('history').add({
-  //     // data 字段表示需新增的 JSON 数据
-  //     data: {
-  //       content: that.data.content,
-  //       //date: new Date(),
-  //       date: that.data.date,
-  //       images: that.data.images,
-  //       user: that.data.user,
-  //       isLike: that.data.isLike,
-  //     },
-  //     success: function(res) {
-  //       // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-  //       console.log(res)
-  //     },
-  //     fail: console.error
-  //   })
-  // },
-
 
   /**
    * 判断用户是否登录
@@ -210,7 +241,7 @@ Page({
             success: function(res) {
 
               that.data.user = res.userInfo;
-              console.log(that.data.user)
+              //console.log(that.data.user)
             }
           })
         }

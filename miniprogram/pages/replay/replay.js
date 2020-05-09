@@ -11,6 +11,7 @@ Page({
     openid: '',
     user:{},
     content: '',
+    disabled: false
     
   },
 
@@ -44,54 +45,58 @@ Page({
   bindKeyInput(e) {
     //this.toDate();
     that.data.content = e.detail.value;
-    console.log("内容：" + that.data.content)
+    //console.log("内容：" + that.data.content)
 
   },
  
  
 
   saveReplay: function() {
-    this.toDate();
-    if (that.data.content.trim() == '') {
-      wx.showToast({
-        icon: 'none',
-        title: '写点东西吧',
-      })
-    } else {
-      db.collection('comment').add({
-        // data 字段表示需新增的 JSON 数据
-        data: {
-          content: that.data.content,
-          //date: new Date(),
-          date: that.data.date,
-          r_id: that.data.id,
-          u_id: that.data.openid,
-          t_id: that.data.id,
-          user: that.data.user,
-          secondreplay: {}
-        },
-        // data: {
-        //   content: that.data.content,
-        //   //date: new Date(),
-        //   date: that.data.date,
-        //   images: that.data.images,
-        //   user: that.data.user,
-        //   isLike: that.data.isLike,
-        // },
+    if (JSON.stringify(this.data.user) !== "{}") {
+      this.toDate();
+      if (that.data.content.trim() == '') {
+        wx.showToast({
+          icon: 'none',
+          title: '写点东西吧',
+        })
+      } else {
+        db.collection('comment').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            content: that.data.content,
+            //date: new Date(),
+            date: that.data.date,
+            r_id: that.data.id,
+            u_id: that.data.openid,
+            t_id: that.data.id,
+            user: that.data.user,
+            secondreplay: {}
+          },
+          // data: {
+          //   content: that.data.content,
+          //   //date: new Date(),
+          //   date: that.data.date,
+          //   images: that.data.images,
+          //   user: that.data.user,
+          //   isLike: that.data.isLike,
+          // },
 
-        success: function (res) {
-          wx.showToast({
-            title: '发射成功',
-          })
-          setTimeout(function () {
-            wx.navigateBack({
-              url: "../homeDetail/homeDetail?id=" + that.data.id + "&openid=" + that.data.openid
+          success: function (res) {
+            wx.showToast({
+              title: '发射成功',
             })
-          }, 1500)
+            setTimeout(function () {
+              wx.navigateBack({
+                url: "../homeDetail/homeDetail?id=" + that.data.id + "&openid=" + that.data.openid
+              })
+            }, 1500)
 
-        },
-        fail: console.error
-      })
+          },
+          fail: console.error
+        })
+      }
+    } else {
+      that.jugdeUserLogin();
     }
   },
     

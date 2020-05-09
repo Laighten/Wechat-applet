@@ -3,6 +3,7 @@
   "pages": [
     "pages/home/home",
     "pages/publish/publish",
+    "pages/MyMessage/RePublish/republish",
     "pages/me/me",
     "pages/homeDetail/homeDetail",
     "pages/history/history",

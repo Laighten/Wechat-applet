@@ -28,8 +28,8 @@
         <view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
         <view class='user-name-time'>
               <view class='user-name'>{{item.user.nickName}}
-                  <button bindtap="access" type='primary' data-topicId='{{item._id}}' class="cu-btn round shadow item-right bg-green blank1">通过</button>
-                  <button bindtap="notAccess" type='warn' data-topicId='{{item._id}}' class="cu-btn bg-red round shadow item-right blank2">不通过</button>
+                  <button bindtap="access" data-topicId='{{item._id}}' class="cu-btn item-right bg-grey blank1">通过</button>
+                  <button bindtap="notAccess" data-topicId='{{item._id}}' class="cu-btn bg-red  item-right blank2">不通过</button>
                   </view>
           <view class='user-publish-time'>{{item.date}}</view>
         </view>

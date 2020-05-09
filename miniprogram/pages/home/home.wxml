@@ -1,6 +1,7 @@
 <!--miniprogram/pages/home/home.wxml-->
+ <button class="cu-btn line-red btn" bindtap="changeLocation" >切换定位</button>
 <block wx:key='index' wx:for='{{topics}}' wx:for-index="idx">
-  <view class='container  cu-card ' bindtap='onItemClick' data-topicId='{{item._id}}' data-openid='{{item._openid}}'>
+  <view class='container  cu-card ' bindtap='onItemClick' data-topicId='{{item._id}}' data-openid='{{item._openid}}' >
     <view class='container-content cu-item grid grid-square shadow-blur'>
       <view class='user-info' >
         <image class='user-head' src='{{item.user.avatarUrl}}' mode='aspectFill'></image>
@@ -34,7 +35,7 @@
         </block>
       </view>
     </view>
-
+ 
    
   </view>
 </block>

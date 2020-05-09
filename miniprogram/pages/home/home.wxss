@@ -84,5 +84,12 @@
   margin-top: 10px;
   background-color: #999;
 }
+.btn {
 
+  width: 100%;
+  background-color: white;
+  
+
+
+}
 

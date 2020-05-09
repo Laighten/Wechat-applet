@@ -13,6 +13,7 @@ Page({
     user:{},
     content: '',
     itemId:'',//评论的通讯的id
+    disabled: false
   },
 
   /**
@@ -46,52 +47,17 @@ Page({
   bindKeyInput(e) {
     //this.toDate();
     that.data.content = e.detail.value;
-    console.log("内容：" + that.data.content)
+    //console.log("内容：" + that.data.content)
 
   },
  
  
 
-  // saveReplay: function() {
-  //   this.toDate();
-  //   wx.cloud.callFunction({
-  //     name: 'updateSecondReplay',//函数名
-  //     data:{
-  //       t_id_first:that.data.id,
-  //       content: that.data.content,
-  //       user: that.data.user,
-  //     },
-  //     success: function(res) {
-  //       console.log(res.result)
-  //       wx.showToast({
-  //         title: '发射成功',
-  //       })
-  //       setTimeout(function() {
-  //         wx.navigateBack({
-  //           url: "../homeDetail/homeDetail?id=" + that.data.id + "&openid=" + that.data.openid
-  //         })
-  //       }, 1500)
-
-  //     },
-  //     fail: console.error
-  //   })
-
-
-
-
-    // db.collection('comment').add({
-    //   // data 字段表示需新增的 JSON 数据
-    //   data: {
-    //     content: that.data.content,
-    //     //date: new Date(),
-    //     date: that.data.date,
-    //     r_id: that.data.id,
-    //     u_id: that.data.openid,
-    //     t_id: that.data.id,
-    //     user: that.data.user,
-    //     firstopenid:that.data.firstopenid
-    //   },
-    saveReplay: function() {
+  saveReplay: function () {
+    if (JSON.stringify(this.data.user) !== "{}") {
+      this.setData({
+        disabled: true
+      })
       this.toDate();
       if (that.data.content.trim() == '') {
         wx.showToast({
@@ -127,27 +93,27 @@ Page({
           fail: console.error
         })
       }
-    },
 
-
-
-   
-  
-    jugdeUserLogin: function(event) {
-      // 查看是否授权
-      wx.getSetting({
-        success(res) {
-          if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-            wx.getUserInfo({
-              success: function(res) {
-  
-                that.data.user = res.userInfo;
-                console.log(that.data.user)
-              }
-            })
-          }
-        }
-      })
+    } else {
+      that.jugdeUserLogin()
     }
-  })
+  },
+
+  jugdeUserLogin: function(event) {
+    // 查看是否授权
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function(res) {
+
+              that.data.user = res.userInfo;
+              console.log(that.data.user)
+            }
+          })
+        }
+      }
+    })
+  }
+})

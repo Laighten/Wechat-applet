@@ -2,13 +2,19 @@
 <view class="content">
   <view class="text-content">
     <view class='input-content'>
-      <input bindinput="bindKeyInput" placeholder="开始你的表演~" />
+      <input class="textarea" bindinput="bindKeyInput" placeholder="开始你的表演~" />
     </view>
 
   </view>
 
   <view class='btn-func'>
-    <button class="btn" formType='submit' bindtap='saveReplay' open-type="getUserInfo">发射神评</button>
+    <block wx:if="{{!disabled}}">
+      <button class="btn" formType='submit'  open-type="getUserInfo" bindtap='saveReplay'>发射神评</button>
+    </block>
+    <block  wx:if="{{disabled}}">
+      <button class="btn" >发射神评</button>
+    </block>
+    
   </view>
 
 </view>

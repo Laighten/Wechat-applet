@@ -55,5 +55,10 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "我们将根据您的位置信息显示发布内容"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

@@ -15,7 +15,9 @@
 			<view class='user-info'>
 				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
-					<view class='user-name'>{{item.user.nickName}}<view class="cu-tag round bg-orange light wait">审核中</view></view>
+					<view class='user-name'>{{item.user.nickName}}
+						<view class="cu-tag round bg-orange light wait">审核中</view>
+					</view>
 					<view class='user-publish-time'>{{item.date}}</view>
 
 				</view>
@@ -65,8 +67,8 @@
 				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
 					<view class='user-name'>{{item.user.nickName}}
-          <button bindtap="delOneH" data-topicId='{{item._id}}' class="cu-btn bg-red item-right blank1">删除</button>
-          </view>
+						<button bindtap="delOneH" data-topicId='{{item._id}}' class="cu-btn bg-red blank">删除</button>
+					</view>
 					<view class='user-publish-time'>{{item.date}}</view>
 				</view>
 			</view>
@@ -115,9 +117,9 @@
 				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
 					<view class='user-name'>{{item.user.nickName}}
-               <button bindtap="reWrite"  data-topicId='{{item._id}}' class="cu-btn bg-grey item-right  blank2">重新编写</button>
-                <button bindtap="delTwoH"  data-topicId='{{item._id}}' class="cu-btn bg-red item-right  blank3">删除</button>
-          </view>
+						<button bindtap="delTwoH" data-topicId='{{item._id}}' class="cu-btn bg-red blank">删除</button>
+						<button bindtap="reWrite" data-topicId='{{item._id}}' class="cu-btn bg-grey blank">重新编写</button>
+					</view>
 					<view class='user-publish-time'>{{item.date}}</view>
 				</view>
 			</view>

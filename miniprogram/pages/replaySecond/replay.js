@@ -44,20 +44,22 @@ Page({
       that.data.date = dateY + '-' + dateM+'-'+dateD + ' ' + dateH + ':' + datem + ':' + dateS
       //console.log(that.data.date);
     },
-  bindKeyInput(e) {
-    //this.toDate();
-    that.data.content = e.detail.value;
-    //console.log("内容：" + that.data.content)
+  // bindKeyInput(e) {
+  //   //this.toDate();
+  //   that.data.content = e.detail.value;
+  //   //console.log("内容：" + that.data.content)
 
+  // },
+  getTextAreaContent: function(event) {
+    that.data.content = event.detail.value;
   },
  
  
 
-  saveReplay: function () {
+  formSubmit: function (e) {
+    this.data.content = e.detail.value['input-content'];
     if (JSON.stringify(this.data.user) !== "{}") {
-      this.setData({
-        disabled: true
-      })
+      
       this.toDate();
       if (that.data.content.trim() == '') {
         wx.showToast({
@@ -65,6 +67,9 @@ Page({
           title: '写点东西吧',
         })
       } else {
+        this.setData({
+          disabled: true
+        })
         db.collection('commentSecond').add({
           // data 字段表示需新增的 JSON 数据
           data: {

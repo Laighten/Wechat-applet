@@ -196,9 +196,7 @@
   text-align: right
 }
 
-.blank1{
-  margin-left: 30%;
-}
-.blank2{
-  margin-left: 15rpx;
+.blank{
+  float: right;
+  margin-right: 3%;
 }

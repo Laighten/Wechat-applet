@@ -17,6 +17,11 @@
     "pages/me/message/message",
     "pages/replaySecond/replay"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "我们将根据您的位置信息显示发布内容"
+    }
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
@@ -54,11 +59,6 @@
         "selectedIconPath": "images/tab/me_select.png"
       }
     ]
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "我们将根据您的位置信息显示发布内容"
-    }
   },
   "sitemapLocation": "sitemap.json"
 }

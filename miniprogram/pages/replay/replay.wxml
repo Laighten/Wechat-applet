@@ -1,20 +1,24 @@
 <!--miniprogram/pages/advance/advance.wxml-->
 <view class="content">
+<form bindsubmit="formSubmit">
   <view class="text-content">
     <view class='input-content'>
-      <input class="textarea" bindinput="bindKeyInput" placeholder="开始你的表演~" />
+      <!-- <input class="textarea" bindinput="bindKeyInput" placeholder="开始你的表演~" /> -->
+      
+        <textarea class='text-area' name="input-content" type="text" placeholder="发表你的评论吧~（最多150字哦）" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent' maxlength='150'></textarea>
+      
     </view>
 
   </view>
-
+<!--  class='btn-func' -->
   <view class='btn-func'>
     <block wx:if="{{!disabled}}">
-      <button class="btn" formType='submit'  open-type="getUserInfo" bindtap='saveReplay'>发射神评</button>
+      <button class="btn" formType='submit'  open-type="getUserInfo" >发表评论</button>
     </block>
     <block  wx:if="{{disabled}}">
-      <button class="btn" >发射神评</button>
+      <button class="btn" >发表评论</button>
     </block>
     
   </view>
-
+</form>
 </view>

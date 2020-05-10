@@ -2,63 +2,63 @@
 
 <!--按日期删除-->
 <view class='cu-bar bg-white solid-bottom margin-top'>
-  <view class='icon'>
-    <image src='../../images/Admin/detele.png' style="width:22px;height:21px;"></image>
-  </view>
-  <view class='itemName'>
-    <picker  mode= "date" bindchange='batchDelete'>按日期删除</picker>
-  </view>
+	<view class='icon'>
+		<image src='../../images/Admin/detele.png' style="width:22px;height:21px;"></image>
+	</view>
+	<view class='itemName'>
+		<picker mode="date" bindchange='batchDelete'>按日期删除</picker>
+	</view>
 </view>
 <view class='line'></view>
 
 <view class='cu-bar bg-white solid-bottom margin-top' data-index='1' catchtap='panel'>
-  <view class='icon'>
-    <image src='../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
-  </view>
-  <view class='itemName'>
-    <view>待审核信息</view>
-  </view>
+	<view class='icon'>
+		<image src='../../images/Admin/waitAcc.png' style="width:22px;height:21px;"></image>
+	</view>
+	<view class='itemName'>
+		<view>待审核信息</view>
+	</view>
 </view>
 <view class='container-line1'></view>
 
 <block wx:key='index' wx:for='{{waitAdds}}' wx:for-index="idx" wx:if="{{showIndex == 1}}">
-  <view class='radius shadow-warp bg-white margin-top' bindtap=''>
-    <view class='container-content'>
-      <view class='user-info'>
-        <view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
-        <view class='user-name-time'>
-              <view class='user-name'>{{item.user.nickName}}
-                  <button bindtap="access" data-topicId='{{item._id}}' class="cu-btn item-right bg-grey blank1">通过</button>
-                  <button bindtap="notAccess" data-topicId='{{item._id}}' class="cu-btn bg-red  item-right blank2">不通过</button>
-                  </view>
-          <view class='user-publish-time'>{{item.date}}</view>
-        </view>
-      </view>
-      <view class='content'>
-        <!-- 显示文本 -->
-        <block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
-          <text class='content-text'>{{item.content}}</text>
-          <scroll-view class='content-scroll' scroll-x='true'>
-            <block wx:key='index' wx:for="{{item.images}}">
-              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
-            </block>
-          </scroll-view>
-        </block>
-        <!-- 显示图片 -->
-        <block wx:elif="{{item.images.length > 0}}">
-          <scroll-view class='content-scroll' scroll-x='true'>
-            <block wx:for="{{item.images}}">
-              <image class='content-img' src='{{item}}' mode='aspectFill'></image>
-            </block>
-          </scroll-view>
+	<view class='radius shadow-warp bg-white margin-top' bindtap=''>
+		<view class='container-content'>
+			<view class='user-info'>
+				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
+				<view class='user-name-time'>
+					<view class='user-name'>{{item.user.nickName}}
+						<button bindtap="notAccess" data-topicId='{{item._id}}' class="cu-btn bg-red blank">不通过</button>
+						<button bindtap="access" data-topicId='{{item._id}}' class="cu-btn bg-grey blank">通过</button>
+					</view>
+					<view class='user-publish-time'>{{item.date}}</view>
+				</view>
+			</view>
+			<view class='content'>
+				<!-- 显示文本 -->
+				<block wx:key='index' wx:if="{{item.content != ''}} && {{item.images.length > 0}}">
+					<text class='content-text'>{{item.content}}</text>
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:key='index' wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
+				</block>
+				<!-- 显示图片 -->
+				<block wx:elif="{{item.images.length > 0}}">
+					<scroll-view class='content-scroll' scroll-x='true'>
+						<block wx:for="{{item.images}}">
+							<image class='content-img' src='{{item}}' mode='aspectFill'></image>
+						</block>
+					</scroll-view>
 
-        </block>
-        <!-- 显示文本 -->
-        <block wx:else>
-          <text class='content-text'>{{item.content}}</text>
-        </block>
-      </view>
-    </view>
+				</block>
+				<!-- 显示文本 -->
+				<block wx:else>
+					<text class='content-text'>{{item.content}}</text>
+				</block>
+			</view>
+		</view>
 
-  </view>
+	</view>
 </block>

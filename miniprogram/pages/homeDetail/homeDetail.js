@@ -31,8 +31,8 @@ Page({
   onLoad: function(options) {
 
     that = this;
-    console.log('disabled1'+that.data.disabled1)
-    console.log('disabled2'+that.data.disabled2)
+    //console.log('disabled1'+that.data.disabled1)
+    //console.log('disabled2'+that.data.disabled2)
     
     that.data.id = options.id;
     that.data.openid = options.openid;
@@ -85,7 +85,7 @@ Page({
       .where({
         t_id: that.data.id
       }).get()
-      console.log(res)
+      
       var len = 0
       var relength = 0
       for(var i = 0;i < res.length;i++){
@@ -152,7 +152,7 @@ Page({
       },
       success: function(res) {
         that.refreshLikeIcon(true)
-        console.log(res)
+        //console.log(res)
       },
     })
   },

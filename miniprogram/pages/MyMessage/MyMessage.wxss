@@ -112,12 +112,7 @@
   font-size:13px;
 }
 
-.blank1{
-  margin-left: 60%;
-}
-.blank2{
-  margin-left: 25%;
-}
-.blank3{
-  margin-left: 15px;
+.blank{
+  float: right;
+  margin-right: 3%;
 }

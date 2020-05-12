@@ -16,7 +16,7 @@
 
 }
 textarea {
-  width: 700rpx;
+  width: 650rpx;
   padding: 25rpx 0;
 }
 
@@ -75,11 +75,10 @@ textarea {
   width: 220px;
   height: 45px;
   line-height: 45px;
-  margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #1cbbb4;
+  background-color: #3bb6b0;
   color: #fff;
-  border-radius: 50px;
+  border-radius: 10px;
 }
 
 .btn {

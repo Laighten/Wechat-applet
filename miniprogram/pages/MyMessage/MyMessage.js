@@ -207,6 +207,11 @@ Page({
         num: 2
       }
     }).then(console.log);
+    wx.showToast({
+      title: '删除成功，刷新试试~~',
+      icon: 'none',
+      duration: 1500
+    })
 
   },
   delTwoH:function(event){
@@ -218,6 +223,11 @@ Page({
         num: 3
       }
     }).then(console.log);
+    wx.showToast({
+      title: '删除成功，刷新试试~~',
+      icon: 'none',
+      duration: 1500
+    })
    
   },
   

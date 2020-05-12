@@ -8,13 +8,27 @@
 .text-content {
   padding: 0 25rpx;
 }
+.text-area{
+  margin-top: 130px;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 2px 2px blur #ccc;
+  border-radius: 5px;
+  width: 100%;
 
+}
 textarea {
+  width: 650rpx;
+  padding: 25rpx 0;
+}
+/* textarea {
   width: 100%;
   height: 750rpx;
   padding: 5px;
   background-color: #f3efef;
-}
+} */
 
 .input-content{
   display: flex;
@@ -36,12 +50,10 @@ textarea {
   flex-direction: column;
   width: 100%;
   position: absolute;
-  bottom: 0;
+  bottom: 100px;
   margin: 0 auto;
   align-items: center;
 }
-
-
 
 .btn {
   width: 220px;
@@ -52,4 +64,3 @@ textarea {
   border-radius: 50px;
   margin-bottom: 20px;
 }
-

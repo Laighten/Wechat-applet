@@ -195,6 +195,8 @@ Page({
             images: that.data.waitAdds[i].images,
             isLike: false,
             user: that.data.waitAdds[i].user,
+            address: that.data.waitAdds[i].address,
+            addr: that.data.waitAdds[i].addr
           },
           // success: function (res) {
           //     that.accessWell()

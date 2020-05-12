@@ -3,7 +3,7 @@
   <form bindsubmit="formSubmit">
     <view class="text-content">
       <view class='text-area'>
-        <textarea name="input-content" type="text" placeholder="说点什么吧~(图片最多可上传六张哦)" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent' maxlength='300'></textarea>
+        <textarea name="input-content" type="text" placeholder="说点什么吧~(字数最多300字，图片最多可上传六张哦)" placeholder-class="holder" value="{{textContent}}" bindblur='getTextAreaContent' maxlength='300'></textarea>
       </view>
 
     </view>
@@ -14,11 +14,21 @@
         <icon type='clear' bindtap='removeImg'  data-index="{{idx}}" ></icon>
       </view>
       </block>
-      
     </scroll-view>
+    <view class="getLocation-container">
+      <view wx:if="{{address !=''}}">
+      <view><text class="cuIcon-locationfill"> </text>详细地址:{{address}}</view>
+      </view>
+    </view>
     <view class='btn-func'>
-      <button class="btn-img" bindtap='chooseImage'>选择图片</button>
-      <button class="btn" formType='submit'  open-type="getUserInfo">发布便民讯息</button>
+      <button class="btn-img" bindtap='chooseImage'><text class="cuIcon-camerafill"></text> 选择图片</button>
+      <button class="btn-img" bindtap='getLocation' ><text class="cuIcon-locationfill"> </text> 打开地图选择位置</button>
+      <block wx:if="{{!disabled}}">
+        <button class="btn" open-type="getUserInfo"  formType='submit'  >发布便民讯息</button>
+      </block>
+      <block  wx:if="{{disabled}}">
+        <button class="btn">发布便民讯息</button>
+      </block>
       <!-- <image hidden=''></image> -->
     </view>
   </form>

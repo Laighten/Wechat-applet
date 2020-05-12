@@ -153,6 +153,13 @@
 					"id": -1,
 					"name": "pages/homeDetail/homeDetail",
 					"pathName": "pages/homeDetail/homeDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
 					"scene": null
 				}
 			]

@@ -58,18 +58,19 @@
   </view>
   <view class='hr'></view>
   <!-- 产品意见 -->
-  <view class='item' bindtap='onAdvanceClick'>
-    <view class='icon'>
-      <image src='../../images/me/advice.png' style="width:22px;height:21px;"></image>
-    </view>
-    <view class='itemName'>
-      <view>产品意见</view>
-    </view>
+  
+  <button class="item" open-type='feedback'>
+      <view class="icon">
+        <image src="../../images/me/advice.png" style="width:22px;height:21px;"></image>
+      </view>
+      <view class="itemName">
+        <view>意见反馈</view>
+      </view>
     <view class='right'>></view>
-  </view>
+  </button>
   <view class='hr'></view>
   <view class='line'></view>
-
+  
   <view wx:if='{{isAdmin==1}}'>
     <view class='item' bindtap='onAdminClick'>
       <view class='icon'>

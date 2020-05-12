@@ -133,11 +133,11 @@ Page({
   /**
    * 提交意见
    */
-  onAdvanceClick: function (event) {
-    wx.navigateTo({
-      url: '../advance/advance',
-    })
-  },
+  // onAdvanceClick: function (event) {
+  //   wx.navigateTo({
+  //     url: '../advance/advance',
+  //   })
+  // },
 
 
   clickInvitivation: function (event) {

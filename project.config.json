@@ -158,8 +158,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/me/me",
-					"pathName": "pages/me/me",
+					"name": "pages/me/aboutMe/aboutMe",
+					"pathName": "pages/me/aboutMe/aboutMe",
 					"scene": null
 				}
 			]

@@ -15,7 +15,8 @@
     "pages/applyAdmin/applyAdmin",
     "pages/me/checkAdmin/checkAdmin",
     "pages/me/message/message",
-    "pages/replaySecond/replay"
+    "pages/replaySecond/replay",
+    "pages/me/aboutMe/aboutMe"
   ],
   "permission": {
     "scope.userLocation": {

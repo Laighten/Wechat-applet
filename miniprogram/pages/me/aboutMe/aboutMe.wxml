@@ -1,0 +1,37 @@
+<!--miniprogram/pages/me/aboutMe/aboutMe.wxml-->
+<view class="cu-timeline">
+  <view class="cu-time">自我介绍</view>
+  <view class="cu-item text-green cur cuIcon-crownfill">
+    <view class="content bg-green shadow-blur">
+       在这里您可以浏览、发布便民信息
+    </view>
+  </view>
+  <view class="cu-time">使用方法</view>
+  <view class="cu-item text-red cuIcon-evaluate_fill">
+    <view class="content bg-red shadow-blur">
+      便民讯息：小程序会根据您选择的地理位置来显示发布的信息，对感兴趣的讯息您还可以评论、收藏
+    </view>
+  </view>
+  <view class="cu-item text-red cuIcon-evaluate_fill">
+    <view class="content bg-red shadow-blur">
+      发布讯息：您可以添加文字，添加图片，选择地理位置来发送便民信息，在管理员审核通过后就可以显示在主页啦
+    </view>
+  </view>
+  <view class="cu-item text-red cuIcon-evaluate_fill">
+    <view class="content bg-red shadow-blur">
+      我的发布：您可以看到您发布的所有讯息，其中包括待审核讯息、已发布讯息和未通过讯息，未通过的讯息您可以重新编辑再次提交
+    </view>
+  </view>
+  <view class="cu-item text-red cuIcon-evaluate_fill">
+    <view class="content bg-red shadow-blur">
+      我的：在这里您可以查看您收藏的讯息、消息通知、产品意见反馈，您还可以申请成为管理员，拥有管理权限
+    </view>
+  </view>
+  <view class="cu-time">意见反馈</view>
+  <view class="cu-item text-grey cuIcon-attentionfill">
+    <view class="content bg-grey shadow-blur">
+      感谢与您的相遇，如有问题，请在“我的”界面，点击“意见反馈”进行提交，我们会在第一时间进行处理，谢谢您的支持~
+    </view>
+  </view>
+  
+</view>

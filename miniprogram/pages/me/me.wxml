@@ -26,7 +26,6 @@
 		<view class='itemName'>
 			<view>收藏列表</view>
 		</view>
-
 	</view>
 
 	<!-- 我的消息 -->
@@ -66,6 +65,16 @@
 			</view>
 	</button>
 	<view class='hr'></view>
+  <!-- 关于我们 -->
+  <view class='item' bindtap='clickAboutMe'>
+    <view class='icon'>
+      <image src='../../images/me/we.png' style="width:22px;height:21px;"></image>
+    </view>
+    <view class='itemName'>
+      <view>关于我们</view>
+    </view>
+  </view>
+  <view class='hr'></view>
 	<view class='line'></view>
 
 	<view wx:if='{{isAdmin==1}}'>
@@ -100,6 +109,4 @@
 			</view>
 		</view>
 	</view>
-
-
 </view>

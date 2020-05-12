@@ -79,6 +79,14 @@ Page({
     })
   },
   /*
+  关于我们
+   */
+  clickAboutMe:function(){
+    wx.navigateTo({
+      url: './aboutMe/aboutMe',
+    })
+  },
+  /*
   管理员界面
   */
   onAdminClick: function (event) {

@@ -27,7 +27,7 @@
 			<view class='user-info'>
 				<view class="cu-avatar round lg" style="background-image:url({{item.user.avatarUrl}});"></view>
 				<view class='user-name-time'>
-					<view class='user-name'>{{item.user.nickName}}
+					<view class='user-name'><text>{{item.user.nickName}}</text>
 						<button bindtap="notAccess" data-topicId='{{item._id}}' class="cu-btn bg-red blank">不通过</button>
 						<button bindtap="access" data-topicId='{{item._id}}' class="cu-btn bg-grey blank">通过</button>
 					</view>

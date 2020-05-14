@@ -160,6 +160,20 @@
 					"id": -1,
 					"name": "pages/me/aboutMe/aboutMe",
 					"pathName": "pages/me/aboutMe/aboutMe",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/me/me",
+					"pathName": "pages/me/me",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/Admin/Admin",
+					"pathName": "pages/Admin/Admin",
 					"scene": null
 				}
 			]

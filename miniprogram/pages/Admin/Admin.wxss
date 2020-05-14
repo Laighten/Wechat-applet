@@ -156,7 +156,7 @@
 }
 
 .user-name {
-  font-size: 18px;
+  font-size: 16px;
   color: #333;
   font-weight: bold;
 }
@@ -198,5 +198,5 @@
 
 .blank{
   float: right;
-  margin-right: 3%;
+  margin-right: 1%;
 }

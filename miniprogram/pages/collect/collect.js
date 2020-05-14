@@ -75,10 +75,12 @@ Page({
    */
   onItemClick: function(event) {
     var id = event.currentTarget.dataset.topicid;
-    console.log(id);
+
     wx.navigateTo({
       url: "../homeDetail/homeDetail?id=" + id
     })
+    that.data.collects={}
+    that.data.topics =[]
   },
 
   /**

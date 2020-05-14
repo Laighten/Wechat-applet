@@ -35,6 +35,11 @@ Page({
     }).catch(err => {
       console.log(err)
     })
+    wx.showToast({
+      title: '已删除'+date+'之前的讯息',
+      icon: 'none',
+      duration: 1500
+    })
   },
   panel: function (e) {
     //console.log(that.data.imgPath.length)

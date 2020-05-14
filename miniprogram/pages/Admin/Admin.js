@@ -1,6 +1,7 @@
 // pages/Admin/Admin.js
 var that
 const db = wx.cloud.database();
+const _ = db.command;
 Page({
 
   /**
@@ -14,25 +15,29 @@ Page({
     waitAdds: {},
     
   },
-  
-  
+   /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    that = this
+    that.getData(that.data.page);
+  },
   //删除
   // 管理员批量删除
   batchDelete: function (e) {
     var date = String(e.detail.value);
-    //console.log(typeof(date))
+    //console.log(imgPath)
     wx.cloud.callFunction({
       name: 'batchDelete',
       data: {
-        newDate: e.detail.value
+        newDate: e.detail.value,
       }
-    }).then(res => {
-      console.log(res)
     }).catch(err => {
       console.log(err)
     })
   },
   panel: function (e) {
+    //console.log(that.data.imgPath.length)
     if (e.currentTarget.dataset.index != this.data.showIndex) {
       this.setData({
         showIndex: e.currentTarget.dataset.index

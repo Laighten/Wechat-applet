@@ -3,7 +3,7 @@
   <view class="cu-time">自我介绍</view>
   <view class="cu-item text-green cur cuIcon-crownfill">
     <view class="content bg-green shadow-blur">
-       在这里您可以浏览、发布便民信息
+       该小程序主要用于区域便民讯息的发布和查看。选择区域可查看自己所在区、镇范围内的便民讯息，同时亦可自己发布便民讯息，包括招聘、宣传、美食等等。发布后交由后台管理员审核，若无敏感或者违法信息则可在管理员通过后在便民讯息模块看见。同为一个区或镇使用该小程序的人均可看到这些便民讯息。
     </view>
   </view>
   <view class="cu-time">使用方法</view>

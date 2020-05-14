@@ -8,14 +8,13 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
   const _ = db.command;
-  var date=event.newDate
-  console.log(date)
+  var date = event.newDate
   try{
       return await db.collection('topic').where({
-        date: _.gte(date)
+        date: _.lte(date)
       }).remove();
   }catch(e){
       console.error(e);
   }
- 
+  
 }

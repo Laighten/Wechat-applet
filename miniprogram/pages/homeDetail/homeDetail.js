@@ -20,7 +20,8 @@ Page({
     duration: 500,
     replaysSecond:[],
     disabled1:false,
-    disabled2:false
+    disabled2:false,
+    emptyTopic:false
     
     
   },
@@ -39,12 +40,40 @@ Page({
     // 获取话题信息
     db.collection('topic').doc(that.data.id).get({
       success: function(res) {
+        console.log(res)
         that.topic = res.data;
         that.setData({
           topic: that.topic,
         })
+      },
+      fail: function(err){
+        that.emptyTopic = true
+        that.setData({
+          emptyTopic: that.emptyTopic,
+        })
+        /*删除二级评论*/
+        wx.cloud.callFunction({
+          name: 'delSecondComment',
+          data: {
+            topicId: that.data.id
+          }
+        }).then(res => {
+          console.log(res)         
+        }).catch(err => {
+          console.log(err)
+        })
+        /*删除一级评论*/
+        wx.cloud.callFunction({
+          name: 'delComment',
+          data: {
+            topicId: that.data.id
+          }
+        }).then(res => {
+          console.log(res)
+        }).catch(err => {
+          console.log(err)
+        })
       }
-
     })
 
     // 获取收藏情况
@@ -174,7 +203,7 @@ Page({
       disabled1 : true
     })
     wx.navigateTo({
-      url: "../replay/replay?id=" + that.data.id + "&openid=" + that.data.openid
+      url: "../replay/replay?id=" + that.data.id + "&openid=" + that.data.openid + "&topicuser=" + that.data.topic._openid
     })
   },
   onReplaySecondClick(e) {
@@ -190,7 +219,7 @@ Page({
     wx.navigateTo({
       //url: "../replaySecond/replay?id=" + that.data.id + "&openid=" + that.data.openid,
       //url: "../replaySecond/replay?id=" + id + "&openid=" + openid 
-      url: "../replaySecond/replay?id=" + id + "&openid=" + openid + "&itemId=" + that.data.id
+      url: "../replaySecond/replay?id=" + id + "&openid=" + openid + "&itemId=" + that.data.id 
     })
   },
   

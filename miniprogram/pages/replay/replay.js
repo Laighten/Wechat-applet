@@ -11,7 +11,8 @@ Page({
     openid: '',
     user:{},
     content: '',
-    disabled: false
+    disabled: false,
+    topicUser:'',
     
   },
 
@@ -22,6 +23,7 @@ Page({
     that = this;
     that.data.id = options.id;
     that.data.openid = options.openid;
+    that.data.topicUser = options.topicuser
     that.jugdeUserLogin();
   },
    //获取当前时间并转换
@@ -77,6 +79,8 @@ Page({
             u_id: that.data.openid,
             t_id: that.data.id,
             user: that.data.user,
+            topicUser:that.data.topicUser,
+            readState:0,
             secondreplay: {}
           },
           // data: {

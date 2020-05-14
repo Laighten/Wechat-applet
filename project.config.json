@@ -165,15 +165,8 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/me/me",
-					"pathName": "pages/me/me",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/Admin/Admin",
-					"pathName": "pages/Admin/Admin",
+					"name": "pages/homeDetail/homeDetail",
+					"pathName": "pages/homeDetail/homeDetail",
 					"scene": null
 				}
 			]

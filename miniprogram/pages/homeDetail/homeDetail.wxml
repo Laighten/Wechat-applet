@@ -14,6 +14,9 @@
       <block wx:if="{{topic.content != '' && topic.images.length == 0}}">
         <text class='content-text '>{{topic.content}}</text>
       </block>
+      <block wx:if="{{emptyTopic}}">
+          <text class='content-text '>您要查看的讯息不存在或已删除~</text>
+      </block>
       <!-- 显示文本 -->
       <!--  wx:if="{{topic.content != ''}} && {{topic.images.length > 0}}" -->
       <block wx:elif="{{topic.content != '' && topic.images.length > 0}}">

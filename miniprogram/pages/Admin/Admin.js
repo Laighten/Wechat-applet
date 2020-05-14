@@ -22,7 +22,7 @@ Page({
     that = this
     that.getData(that.data.page);
   },
-  //删除
+
   // 管理员批量删除
   batchDelete: function (e) {
     var date = String(e.detail.value);
@@ -55,7 +55,6 @@ Page({
   },
   
   getData: async function (page) {
-    
     // 获取总数
     db.collection('waitAdd').count({
       success: function (res) {
@@ -94,11 +93,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-   
       wx.showNavigationBarLoading() //在标题栏中显示加载
       //console.log('pulldown');
       that.getData(that.data.page);
-  
   },
   onReachBottom: function () {
     var temp = [];
@@ -148,7 +145,6 @@ Page({
 
   access:function(event){
     var id = event.currentTarget.dataset.topicid;
-   
     for (var i = 0; i <that.data.waitAdds.length; i++){
       if (that.data.waitAdds[i]._id==id){
         
@@ -171,23 +167,19 @@ Page({
         }).then(res=>{
           console.log(res)
           that.accessWell()
+          that.onLoad()
         })
         
       }
-    };
-    
+    }
     wx.cloud.callFunction({
-   
       name: 'deleteOne',
       data: {
         _id:id,
         num: 1
       }
     }).then(console.log);
-    //that.caxundata(id);
-    // wx.navigateTo({
-    //   url: "Admin"
-    // });
+    
   },
   notAccess: function(event) {
     var id = event.currentTarget.dataset.topicid;
@@ -214,12 +206,12 @@ Page({
         }).then(res => {
           console.log(res)
           that.accessNot()
+          that.onLoad()
         })
 
       }
     };
     wx.cloud.callFunction({
-
       name: 'deleteOne',
       data: {
         _id: id,
@@ -227,7 +219,6 @@ Page({
       }
     }).then(console.log);
     //that.caxundata(id);
-    
   },
   
   accessWell:function(){
@@ -244,11 +235,5 @@ Page({
       duration: 1500
     })
   },
-  /**
-    * 生命周期函数--监听页面加载
-    */
-  onLoad: function (options) {
-    that = this
-    that.getData(that.data.page);
-  }
+
 })

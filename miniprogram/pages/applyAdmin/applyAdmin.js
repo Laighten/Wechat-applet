@@ -137,16 +137,21 @@ Page({
       })
 
       //console.log(JSON.stringify(this.data.applyInfo) == "{}")
-      if (JSON.stringify(this.data.applyInfo) == "{}") {
-        this.addAdmin()
-      } else {
-        db.collection('admin').doc(this.data.applyInfo._id).remove({
-          success: function(res) {
-            console.log('删除成功')
-            that.addAdmin()
-          }
-        })
+      if (JSON.stringify(that.data.user) == "{}"){
+        jugdeUserLogin()
+      }else{
+        if (JSON.stringify(this.data.applyInfo) == "{}") {
+          this.addAdmin()
+        } else {
+          db.collection('admin').doc(this.data.applyInfo._id).remove({
+            success: function (res) {
+              console.log('删除成功')
+              that.addAdmin()
+            }
+          })
+        }
       }
+      
     }
   },
   /* */

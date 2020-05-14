@@ -222,10 +222,8 @@ Page({
           address: '',
           disabled: false
         })
-
+        
         that.showTipAndSwitchTab();
-
-
       },
     })
   },
@@ -238,11 +236,7 @@ Page({
       icon: 'none',
       duration: 1500
     })
-    // wx.switchTab({
-    //   url: '../MyMessage/MyMessage',
-    // })
   },
-
   /**
    * 删除图片
    */

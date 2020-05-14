@@ -212,7 +212,7 @@ Page({
       icon: 'none',
       duration: 1500
     })
-
+    that.onLoad()
   },
   delTwoH:function(event){
     var id = event.currentTarget.dataset.topicid;
@@ -228,7 +228,7 @@ Page({
       icon: 'none',
       duration: 1500
     })
-   
+    that.onLoad()
   },
   
   reWrite:function(event){

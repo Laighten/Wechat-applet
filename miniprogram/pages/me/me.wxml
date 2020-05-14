@@ -95,7 +95,6 @@
 			<view class='itemName'>
 				<view>申请管理权限</view>
 			</view>
-			<view class='right'>></view>
 		</view>
 	</view>
 	<view wx:if='{{isSuperAdmin}}'>

@@ -24,7 +24,7 @@ App({
       openid: '',
       idl:'',
       superAdmin: false,
-      evn: 'laighten-8h7l4',
+      evn: 'xxxxxxxxxxx',
     }
 
   }
